@@ -132,16 +132,16 @@
 \begin{document}
 
 % Define document title and author
-	\title{Guidelines for Writing a Seminar Report}
-	\author{Firstname Lastname
-	\thanks{Advisor: Dipl.--Ing.~Firstname Lastname, Lehrstuhl f\"ur Nachrichtentechnik, TUM, WS 2050/2051.}}
-	\markboth{Hauptseminar Digitale Kommunikationssysteme}{}
+	\title{Report for lipid bilayer model structural quality}
+	\author{MATCH -- NMRlipids project}
+%	\thanks{Advisor: Dipl.--Ing.~Firstname Lastname, Lehrstuhl f\"ur Nachrichtentechnik, TUM, WS 2050/2051.}}
+	\markboth{NMRlipids project}{}
 	\maketitle
 
 % Write abstract here
-\begin{abstract}
-	The short abstract (50-80 words) is intended to give the reader an overview of the work.
-\end{abstract}
+%\begin{abstract}
+%	The short abstract (50-80 words) is intended to give the reader an overview of the work.
+%\end{abstract}
 
 % Each section begins with a \section{title} command
 \section{Form Factor}
@@ -333,97 +333,32 @@
 \end{figure}
 
 
-\section{Relaxation}
-	The report can be written in \LaTeX{} or Microsoft Word, but \LaTeX{} is definitely preferred.
-	Its appearance should be as close to this document as possible to achieve consistency in the proceedings.
-
-	% You can cite a book or paper by using \cite{reference}.
-	% The references will be defined at the end of this .tex file in the bibliography
-	References should be cited as numbers, and should be ordered by their appearance (example: ``... as shown in \cite{HOP96}, ...'').
-	Only references that are actually cited can be listed in the references section.
-	The references' format should be evident from the examples in this text.
-
-	References should be of academic character and should be published and accessible.
-	Your advisor can answer your questions regarding literature research.
-	You must cite all used sources.
-	Examples of good references include text books and scientific journals or conference proceedings.
-	If possible, citing internet pages should be avoided. In particular, Wikipedia is \emph{not} an appropriate reference in academic reports.
-	Avoiding references in languages other than English is recommended.
-
-	% You can reference tables and figure by using the \ref{label} command. Each table and figure needs to have a UNIQUE label.
-	Figures and tables should be labeled and numbered, such as in Table~\ref{tab:simParameters} and Fig.~\ref{fig:tf_plot}.
-
-	% This is how you define a table: the [!hbt] means that LaTeX is forced (by the !) to place the table exactly here (by h), or if that doesnt work because of a pagebreak or so, it tries to place the table to the bottom of the page (by b) or the top (by t).
-	\begin{table}[!hbt]
-		% Center the table
-		\begin{center}
-		% Title of the table
-		\caption{Simulation Parameters}
-		\label{tab:simParameters}
-		% Table itself: here we have two columns which are centered and have lines to the left, right and in the middle: |c|c|
-		\begin{tabular}{|c|c|}
-			% To create a horizontal line, type \hline
-			\hline
-			% To end a column type &
-			% For a linebreak type \\
-			Information message length & $k=16000$ bit \\
-			\hline
-			Radio segment size & $b=160$ bit \\
-			\hline
-			Rate of component codes & $R_{cc}=1/3$\\
-			\hline
-			Polynomial of component encoders & $[1 , 33/37 , 25/37]_8$\\
-			\hline
-		\end{tabular}
-		\end{center}
-	\end{table}
-
-	% If you have questions about how to write mathematical formulas in LaTeX, please read a LaTeX book or the 'Not So Short Introduction to LaTeX': tobi.oetiker.ch/lshort/lshort.pdf
-
-	% This is how you include a eps figure in your document. LaTeX only accepts EPS or TIFF files.
-%	\begin{figure}[!hbt]
-		% Center the figure.
-%		\begin{center}
-		% Include the eps file, scale it such that it's width equals the column width. You can also put width=8cm for example...
-%		\includegraphics[width=\columnwidth]{plot_tf}
-		% Create a subtitle for the figure.
-%		\caption{Simulation results on the AWGN channel. Average throughput $k/n$ vs $E_s/N_0$.}
-		% Define the label of the figure. It's good to use 'fig:title', so you know that the label belongs to a figure.
-%		\label{fig:tf_plot}
-%		\end{center}
-%	\end{figure}
-
-\section{Overview}
-
-
-%\section{Conclusion}
-%	This section  ummarizes the paper.
 
 % Now we need a bibliography:
-\begin{thebibliography}{5}
+%\begin{thebibliography}{5}
 
 	%Each item starts with a \bibitem{reference} command and the details thereafter.
-	\bibitem{HOP96} % Transaction paper
-	J.~Hagenauer, E.~Offer, and L.~Papke. Iterative decoding of binary block
-	and convolutional codes. {\em IEEE Trans. Inform. Theory},
-	vol.~42, no.~2, pp.~429–-445, Mar. 1996.
-
-	\bibitem{MJH06} % Conference paper
-	T.~Mayer, H.~Jenkac, and J.~Hagenauer. Turbo base-station cooperation for intercell interference cancellation. {\em IEEE Int. Conf. Commun. (ICC)}, Istanbul, Turkey, pp.~356--361, June 2006.
-
-	\bibitem{Proakis} % Book
-	J.~G.~Proakis. {\em Digital Communications}. McGraw-Hill Book Co.,
-	New York, USA, 3rd edition, 1995.
-
-	\bibitem{talk} % Web document
-	F.~R.~Kschischang. Giving a talk: Guidelines for the Preparation and Presentation of Technical Seminars.
-	\url{http://www.comm.toronto.edu/frank/guide/guide.pdf}.
-
-	\bibitem{5}
-	IEEE Transactions \LaTeX and Microsoft Word Style Files.
-	\url{http://www.ieee.org/web/publications/authors/transjnl/index.html}
-
-\end{thebibliography}
+%	\bibitem{HOP96} % Transaction paper
+%	J.~Hagenauer, E.~Offer, and L.~Papke. Iterative decoding of binary block
+%	and convolutional codes. {\em IEEE Trans. Inform. Theory},
+%	vol.~42, no.~2, pp.~429–-445, Mar. 1996.
+%
+%	\bibitem{MJH06} % Conference paper
+%	T.~Mayer, H.~Jenkac, and J.~Hagenauer. Turbo base-station cooperation for intercell interference cancellation. {\em IEEE Int. Conf. Commun. %(ICC)}, Istanbul, Turkey, pp.~356--361, June 2006.
+%
+%	\bibitem{Proakis} % Book
+%	J.~G.~Proakis. {\em Digital Communications}. McGraw-Hill Book Co.,
+%	New York, USA, 3rd edition, 1995.
+%
+%	\bibitem{talk} % Web document
+%	F.~R.~Kschischang. Giving a talk: Guidelines for the Preparation and Presentation of Technical Seminars.
+%	\url{http://www.comm.toronto.edu/frank/guide/guide.pdf}.
+%
+%	\bibitem{5}
+%	IEEE Transactions \LaTeX and Microsoft Word Style Files.
+%	\url{http://www.ieee.org/web/publications/authors/transjnl/index.html}
+%
+%\end{thebibliography}
 
 % Your document ends here!
 \end{document}
