@@ -1,0 +1,22 @@
+# From Ferreira et al. Phys. Chem. Chem. Phys. 2013, 15, 1976−1989.
+# http://dx.doi.org/10.1039/C2CP42738A
+#
+# Signs determined from independent experiments, as discussed
+# in https://github.com/NMRLipids/NMRLipids_V-Review/blob/master/Manuscript/review_manu.pdf
+#
+label    Order_Parameter_1   Order_Parameter_2
+2.00000000 -0.20987741              nan
+3.00000000 -0.18840908              nan
+4.00000000 -0.18619612              nan
+5.00000000 -0.20173615              nan
+6.00000000 -0.19581075              nan
+7.00000000 -0.19507116              nan
+8.00000000 -0.18174699              nan
+9.00000000 -0.17434532              nan
+10.00000000 -0.14991285              nan
+11.00000000 -0.13658578              nan
+12.00000000 -0.11585704              nan
+13.00000000 -0.10623371              nan
+14.00000000 -0.08994829              nan
+15.00000000 -0.06699789              nan
+16.00000000 -0.01813583              nan
