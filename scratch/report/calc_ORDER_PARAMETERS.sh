@@ -71,5 +71,7 @@ H2op=$(awk -v Cname="$Cname" -v Hname="$H2name" -f $groOPpath runPROT.gro)
 label=$(($j-1))
 echo $label $H1op $H2op >> $sn2outname
 done
+cat $sn2outname | awk '{if(!$3)print $1" "$2" nan";else print $0}' > tmp.dat
+mv tmp.dat $sn2outname
 #cd ..
 #rm -r $tmpDIRname

@@ -1,7 +1,11 @@
-LIPIDname=$(grep M_POPC_M $mappingFILE | awk '{printf "%5s\n",$2}')
-grep "1"$LIPIDname ../conf.gro | awk '{print $2}' > tmpEL.dat
-cat tmpEL.dat | awk '{if($0~"C") print $1" =6";if($0~"H") print $1" =1"; if($0~"H") print $1" =1"; if($0~"O") print $1" =8"; if($0~"P") print $1" =15"; if($0~"N") print $1" =7"} 
+LIPIDname=$(grep M_POPC_M ../mappingFILE.txt | awk '{printf "%5s\n",$2}')
+grep ' 1POPC' ../conf.gro | awk '{print $2}' > tmpEL.dat
+cat tmpEL.dat | awk '{if($0~"C") print $1" =6";if($0~"H") print $1" =1"; if($0~"H") print $1" =1"; if($0~"O") print $1" =8"; if($0~"P") print $1" =15"; if($0~"N") print $1" =7";}END{print "OW =6";print "HW1 =1";print "HW2 =1";} 
 ' > electrons.dat
+Enumber=$(cat electrons.dat | awk '{sum=sum+1}END{print sum}')
+echo $Enumber >> tmp.dat
+cat electrons.dat >> tmp.dat 
+mv tmp.dat electrons.dat
 
 echo non-Water System | trjconv -f ../trajectory.xtc -s ../topol.tpr -fit progressive -o ANALtraj.xtc
 echo 0 | g_density -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITY.xvg -xvg none -sl 100
