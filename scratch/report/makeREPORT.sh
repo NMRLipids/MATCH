@@ -7,6 +7,15 @@ GRO_OP=/wrk/ollilas1/HGmodel/NMRlipids/MATCH/scratch/report/gro_OP.awk
 
 cp $REPORT_TEMPLATE ./
 
+echo '0 0' > Electron_Density_From_Simulation.dat
+echo '0 0' > Form_Factor_From_Simulation.dat
+echo 'label  Order_Parameter_1  Order_Parameter_2
+0 0 0' >  Headgroup_Glycerol_Order_Parameters_Simulation.dat
+echo 'label  Order_Parameter_1  Order_Parameter_2
+0 0 0' > sn-1_Order_Parameters_Simulation.dat
+echo 'label  Order_Parameter_1  Order_Parameter_2
+0 0 0' > sn-2_Order_Parameters_Simulation.dat
+
 mkdir ANALYSISdirectory
 #cp $TRAJECTORY ANALYSISdirectory/trajectory.trr
 #cp $ELECTRONS_FILE ANALYSISdirectory/electrons.dat
