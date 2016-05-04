@@ -7,10 +7,13 @@
 #cat electrons.dat >> tmp.dat 
 #mv tmp.dat electrons.dat
 
-echo non-Water System | trjconv -f ../trajectory.xtc -s ../topol.tpr -fit progressive -o ANALtraj.xtc
+cp ../electrons.dat ./electrons.dat
+
+echo non-Water System | trjconv -n ../../../index.ndx -f ../trajectory.xtc -s ../topol.tpr -fit progressive -o ANALtraj.xtc
 cp ../electronsLIPID.dat ./electrons.dat
-echo SOL | g_density -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
-echo PLA | g_density -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
+echo SOL | g_density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
+echo POPC | g_density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
+echo DPPC | g_density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
 #cp ../electronsCHOL.dat ./electrons.dat
 #echo CHOL | g_density -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYchol.xvg -xvg none -sl 100
 #paste electronDENSITYsol.xvg electronDENSITYlipid.xvg electronDENSITYchol.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
