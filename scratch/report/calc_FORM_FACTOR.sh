@@ -9,13 +9,19 @@
 
 cp ../electrons.dat ./electrons.dat
 
-echo non-Water System | trjconv -n ../../../index.ndx -f ../trajectory.xtc -s ../topol.tpr -fit progressive -o ANALtraj.xtc
+! [ -s ANALtraj.xtc ] && echo non-Water System | gmx trjconv -n ../../../index.ndx -f ../trajectory.xtc -s ../topol.tpr -fit progressive -o ANALtraj.xtc
 cp ../electronsLIPID.dat ./electrons.dat
-echo SOL | g_density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
-echo POPC | g_density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
-echo DPPC | g_density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
+! [ -s electronDENSITYsol.xvg ] && echo SOL  | gmx density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
+# do POPC , if it fails, do DPPC:
+
+if ! [ -s electronDENSITYlipid.xvg ] 
+then
+ echo POPC | gmx density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100 || \
+ echo DPPC | gmx density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
+fi
+
 #cp ../electronsCHOL.dat ./electrons.dat
-#echo CHOL | g_density -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYchol.xvg -xvg none -sl 100
+#echo CHOL | gmx density -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYchol.xvg -xvg none -sl 100
 #paste electronDENSITYsol.xvg electronDENSITYlipid.xvg electronDENSITYchol.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
 paste electronDENSITYsol.xvg electronDENSITYlipid.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
 transz=$(cat electronDENSITY.xvg | awk 'BEGIN{min=1000;}{if($2<min){min=$2; minx=$1;}}END{print minx}')

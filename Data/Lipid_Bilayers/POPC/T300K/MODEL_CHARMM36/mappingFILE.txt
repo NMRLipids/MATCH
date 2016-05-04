@@ -135,5 +135,6 @@ M_G3N6C3H2_M     H15B
 M_G3N6C3H3_M     H15C
 #Whole molecules
 M_POPC_M         POPC
+M_DPPC_M         DPPC
 M_NA_M           NA
 M_CA_M           Cal
