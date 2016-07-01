@@ -136,3 +136,5 @@ M_G3N6C3H3_M	C3C
 #Whole molecules
 M_POPC_M         POPC
 M_NA_M           NA
+M_CHOL_M         CHO
+M_SOL_M          SOL
