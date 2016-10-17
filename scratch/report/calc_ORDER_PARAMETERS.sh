@@ -12,7 +12,7 @@ sn2outname=../sn-2_Order_Parameters_Simulation.dat
 
 #THIS IS USED FOR ALL ATOM MODELS
 LIPIDname=$(grep M_POPC_M $mappingFILE | awk '{printf "%5s\n",$2}')
-echo $LIPIDname | trjconv -f ../trajectory.xtc -s ../topol.tpr -o runPROT.gro -pbc res
+echo $LIPIDname | gmx trjconv -f ../trajectory.xtc -s ../topol.tpr -o runPROT.gro -pbc res
 
 #CALCULATE HEADGROUP AND GLYCEROL ORDER PARAMETERS
 rm $HGGLYoutname

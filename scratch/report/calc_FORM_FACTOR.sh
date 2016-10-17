@@ -7,18 +7,22 @@
 #cat electrons.dat >> tmp.dat 
 #mv tmp.dat electrons.dat
 
-/m/nbe/work/ollilas1/HGmodel/NMRlipids/lipid_ionINTERACTION/scratch/boundIons/centerTheBilayer.sh ../mappingFILE.txt ../topol.tpr ../trajectory.xtc centered.xtc
+~/work/NMRlipids/MATCH/scripts/centerTheBilayer.sh ../mappingFILE.txt ../topol.tpr ../trajectory.xtc centered.xtc
 cp ../electronsLIPID.dat ./electrons.dat
 SOLname=$(grep M_SOL_M ../mappingFILE.txt | awk '{printf "%5s\n",$2}')
-echo $SOLname | g_density -f centered.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
+echo $SOLname | gmx density -f centered.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
 LIPIDname=$(grep M_POPC_M ../mappingFILE.txt | awk '{printf "%5s\n",$2}')
-echo $LIPIDname | g_density -f centered.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
+echo $LIPIDname | gmx density -f centered.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
 cp ../electronsCHOL.dat ./electrons.dat
 CHOLname=$(grep M_CHOL_M ../mappingFILE.txt | awk '{printf "%5s\n",$2}')
-echo $CHOLname | g_density -f centered.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYchol.xvg -xvg none -sl 100
-paste electronDENSITYsol.xvg electronDENSITYlipid.xvg electronDENSITYchol.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
-#paste electronDENSITYsol.xvg electronDENSITYlipid.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
-echo non-Water | g_traj -f centered.xtc -s ../topol.tpr -com -ox com.xvg -xvg none
+echo $CHOLname | gmx density -f centered.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYchol.xvg -xvg none -sl 100
+if [ -e "electronDENSITYchol.xvg" ];
+then
+    paste electronDENSITYsol.xvg electronDENSITYlipid.xvg electronDENSITYchol.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
+else
+    paste electronDENSITYsol.xvg electronDENSITYlipid.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
+fi
+echo $LIPIDname | gmx traj -f centered.xtc -s ../topol.tpr -com -ox com.xvg -xvg none
 com=$(cat com.xvg | awk '{sum1=sum1+$4; sum=sum+1;}END{print sum1/sum}')
 cat electronDENSITY.xvg | awk -v com=$com '{print $1-com" "$2}' > electronDENSITYcent.xvg
 slice=$(cat electronDENSITY.xvg | awk '{if(NR==2) print $1}')
