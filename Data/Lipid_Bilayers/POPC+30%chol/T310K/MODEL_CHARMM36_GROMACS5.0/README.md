@@ -1,8 +1,8 @@
 #!/bin/bash
-#Model from http://dx.doi.org/10.5281/zenodo.61649
+#Model from http://doi.org/10.5281/zenodo.159759
 
-wget https://zenodo.org/record/61649/files/chol30.tpr
-wget https://zenodo.org/record/61649/files/chol30.xtc
+wget https://zenodo.org/record/159759/files/chol30.tpr
+wget https://zenodo.org/record/159759/files/chol30.xtc
 
 mv chol30.xtc trajectory.xtc
 mv chol30.tpr topol.tpr
