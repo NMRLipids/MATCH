@@ -16,8 +16,10 @@ wget https://zenodo.org/record/13285/files/endCONF.gro
 wget https://zenodo.org/record/13279/files/popc.itp
 
 gunzip popcCHOL50molPER0-25ns.trr.gz popcCHOL50molPER25-50ns.trr.gz
-trjcat -f popcCHOL50molPER0-25ns.trr popcCHOL50molPER25-50ns.trr -o trajectory.xtc
+gmx trjcat -f popcCHOL50molPER0-25ns.trr popcCHOL50molPER25-50ns.trr -o trajectory.xtc
 mv POPCchol5.tpr topol.tpr
+
+rm popcCHOL50molPER0-25ns.trr popcCHOL50molPER25-50ns.trr
 
 cp /m/nbe/work/ollilas1/HGmodel/NMRlipids/NmrLipidsCholXray/MAPPING/mappingPOPCberger.txt ./mappingFILE.txt
 cp /m/nbe/work/ollilas1/HGmodel/NMRlipids/lipid_ionINTERACTION/scratch/ffgmx2berger.hdb ./ffgmx2.hdb
