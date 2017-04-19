@@ -1,0 +1,20 @@
+# From Wohlgemuth et al. Biochemistry 19 (1980) 3315-3321
+# Table II with 10mM PIPES and 100mM NaCl
+#
+# Absolute values, I am not aware of data for signs
+#
+# This is for 3,1 isomer, 3,3 isomer has forking in alpha
+#
+# 0 = gamma
+# 1 = beta
+# 2 = alpha
+# 3 = g3 
+# 4 = g2 
+# 5 = g1 
+#label Quadrupolar_coupling_1  Quadrupolar_coupling_2 
+0      0.5       0.8
+1     3.3        nan        
+2     10.3       nan
+3     nan        nan
+4     nan        nan
+5       nan      nan

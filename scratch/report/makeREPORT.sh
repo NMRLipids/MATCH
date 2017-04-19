@@ -1,9 +1,16 @@
 #Location of data
 #ELECTRONS_FILE=/wrk/ollilas1/HGmodel/NMRlipids/NmrLipidsCholXray/scratch/POPCberger/electronsBERGER.dat
+<<<<<<< HEAD
 CALC_FORM_FACTOR=/mnt/scratch/scaledip/scripts/MATCH/scratch/report/calc_FORM_FACTOR.sh
 REPORT_TEMPLATE=/mnt/scratch/scaledip/scripts/MATCH/scratch/report/report.tex
 CALC_ORDER_PARAMETERS=/mnt/scratch/scaledip/scripts/MATCH/scratch/report/calc_ORDER_PARAMETERS.sh
 GRO_OP=/mnt/scratch/scaledip/scripts/MATCH/scratch/report/gro_OP.awk
+=======
+CALC_FORM_FACTOR=~/work/NMRlipids/MATCH/scratch/report/calc_FORM_FACTOR.sh
+REPORT_TEMPLATE=~/work/NMRlipids/MATCH/scratch/report/report.tex
+CALC_ORDER_PARAMETERS=~/work/NMRlipids/MATCH/scratch/report/calc_ORDER_PARAMETERS.sh
+GRO_OP=~/work/NMRlipids/MATCH/scratch/report/gro_OP.awk
+>>>>>>> f2b25a2f1f2af896674b00e78d49fcec4ec8f702
 
 cp $REPORT_TEMPLATE ./
 
@@ -29,7 +36,7 @@ sh calc_FORM_FACTOR.sh
 cd ..
 
 #Update Report
-pdflatex report.tex
+#pdflatex report.tex
 
 #Calculate order parameters
 cp ffgmx2.hdb ANALYSISdirectory
@@ -39,4 +46,4 @@ chmod a+x ./calc_ORDER_PARAMETERS.sh
 cd ..
 
 #Update Report
-pdflatex report.tex
+#pdflatex report.tex

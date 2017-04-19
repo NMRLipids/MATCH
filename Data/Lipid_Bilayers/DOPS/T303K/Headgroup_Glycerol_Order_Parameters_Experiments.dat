@@ -1,0 +1,18 @@
+# From Browning and Seelig Biochemistry, 19, 1262-1270, 1980
+# Table II, sample constains 0.1M NaCl due to buffer
+#
+# Absolute values, I am not aware of data for signs
+#
+# 0 = gamma
+# 1 = beta
+# 2 = alpha
+# 3 = g3 
+# 4 = g2 
+# 5 = g1 
+#label Quadrupolar_coupling_1  Quadrupolar_coupling_2 
+0      nan           nan
+1     13.2        nan        
+2     0.9       12.3
+3     25.0        nan
+4     nan        nan
+5       nan      nan
