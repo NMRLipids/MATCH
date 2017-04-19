@@ -7,26 +7,16 @@ sn1outname=../sn-1_Order_Parameters_Simulation.dat
 sn2outname=../sn-2_Order_Parameters_Simulation.dat
 
 #THIS IS USED FOR UNITED ATOM MODELS
-<<<<<<< HEAD
-#echo System | gmx trjconv -f ../trajectory.xtc -s ../topol.tpr -o trajINBOX.xtc -pbc res #-b $starttime -e $endtime
-#echo PLA | /home/ollilas1/gromacs/gromacs402/bin/protonate -f trajINBOX.xtc -s ../topol.tpr -o runPROT.gro
-=======
 #echo System | trjconv -f ../trajectory.xtc -s ../topol.tpr -o trajINBOX.xtc -pbc res #-b $starttime -e $endtime
 #echo PLA | /m/nbe/home/ollilas1/gromacs/gromacs402/bin/protonate -f trajINBOX.xtc -s ../topol.tpr -o runPROT.gro
->>>>>>> f2b25a2f1f2af896674b00e78d49fcec4ec8f702
 
 ####################
 #THIS IS USED FOR ALL ATOM MODELS
-<<<<<<< HEAD
 ####################
 # choose one:
 #LIPIDname=$(grep M_POPC_M $mappingFILE | awk '{printf "%5s\n",$2}')
 LIPIDname=$(grep M_DPPC_M $mappingFILE | awk '{printf "%5s\n",$2}')
 ! [ -s runPROT.gro ] && echo $LIPIDname | gmx trjconv -n ../../../index.ndx -f ../trajectory.xtc -s ../topol.tpr -o runPROT.gro -pbc res
-=======
-LIPIDname=$(grep M_POPC_M $mappingFILE | awk '{printf "%5s\n",$2}')
-echo $LIPIDname | gmx trjconv -f ../trajectory.xtc -s ../topol.tpr -o runPROT.gro -pbc res
->>>>>>> f2b25a2f1f2af896674b00e78d49fcec4ec8f702
 
 #CALCULATE HEADGROUP AND GLYCEROL ORDER PARAMETERS
 rm $HGGLYoutname

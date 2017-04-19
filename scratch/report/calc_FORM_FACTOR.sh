@@ -7,27 +7,6 @@
 #cat electrons.dat >> tmp.dat 
 #mv tmp.dat electrons.dat
 
-<<<<<<< HEAD
-cp ../electrons.dat ./electrons.dat
-
-! [ -s ANALtraj.xtc ] && echo non-Water System | gmx trjconv -n ../../../index.ndx -f ../trajectory.xtc -s ../topol.tpr -fit progressive -o ANALtraj.xtc
-cp ../electronsLIPID.dat ./electrons.dat
-! [ -s electronDENSITYsol.xvg ] && echo SOL  | gmx density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
-# do POPC , if it fails, do DPPC:
-
-if ! [ -s electronDENSITYlipid.xvg ] 
-then
- echo POPC | gmx density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100 || \
- echo DPPC | gmx density -n ../../../index.ndx -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
-fi
-
-#cp ../electronsCHOL.dat ./electrons.dat
-#echo CHOL | gmx density -f ANALtraj.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYchol.xvg -xvg none -sl 100
-#paste electronDENSITYsol.xvg electronDENSITYlipid.xvg electronDENSITYchol.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
-paste electronDENSITYsol.xvg electronDENSITYlipid.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
-transz=$(cat electronDENSITY.xvg | awk 'BEGIN{min=1000;}{if($2<min){min=$2; minx=$1;}}END{print minx}')
-boxz=$(tail -n 1 electronDENSITY.xvg | awk '{print $1}')
-=======
 ~/work/NMRlipids/MATCH/scripts/centerTheBilayer.sh ../mappingFILE.txt ../topol.tpr ../trajectory.xtc centered.xtc
 cp ../electronsLIPID.dat ./electrons.dat
 SOLname=$(grep M_SOL_M ../mappingFILE.txt | awk '{printf "%5s\n",$2}')
@@ -46,7 +25,7 @@ fi
 echo $LIPIDname | gmx traj -f centered.xtc -s ../topol.tpr -com -ox com.xvg -xvg none
 com=$(cat com.xvg | awk '{sum1=sum1+$4; sum=sum+1;}END{print sum1/sum}')
 cat electronDENSITY.xvg | awk -v com=$com '{print $1-com" "$2}' > electronDENSITYcent.xvg
->>>>>>> f2b25a2f1f2af896674b00e78d49fcec4ec8f702
+
 slice=$(cat electronDENSITY.xvg | awk '{if(NR==2) print $1}')
 bulkDENS=$(tail -n 1 electronDENSITY.xvg | awk '{print $2}')
 cat electronDENSITYcent.xvg | awk -v slice=$slice -v bulkDENS=$bulkDENS 'BEGIN{scale=0.01;}{for(q=0;q<1000;q=q+1){F[q]=F[q]+($2-bulkDENS)*cos(scale*q*$1)*slice;}}END{for(q=0;q<1000;q=q+1){print 0.1*q*scale" "0.01*sqrt(F[q]*F[q])
