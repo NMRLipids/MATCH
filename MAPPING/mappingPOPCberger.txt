@@ -1,8 +1,13 @@
+#Water
+M_OW_M           OW
+M_HW1_M          HW1
+M_HW2_M          HW2
 #Whole molecules
 M_POPC_M         PLA
 M_NA_M           NA
 M_CL_M           CL
 M_CA_M           CA
+M_SOL_M          SOL
 #Atoms
 M_G1_M          C32
 M_G1H1_M	H321	

@@ -7,7 +7,7 @@
 #cat electrons.dat >> tmp.dat 
 #mv tmp.dat electrons.dat
 
-~/work/NMRlipids/MATCH/scripts/centerTheBilayer.sh ../mappingFILE.txt ../topol.tpr ../trajectory.xtc centered.xtc
+~/NMRlipids/MATCH/scripts/centerTheBilayer.sh ../mappingFILE.txt ../topol.tpr ../trajectory.xtc centered.xtc
 cp ../electronsLIPID.dat ./electrons.dat
 SOLname=$(grep M_SOL_M ../mappingFILE.txt | awk '{printf "%5s\n",$2}')
 echo $SOLname | gmx density -f centered.xtc -s ../topol.tpr -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
