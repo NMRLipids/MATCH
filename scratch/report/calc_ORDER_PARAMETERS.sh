@@ -10,9 +10,13 @@ sn2outname=../sn-2_Order_Parameters_Simulation.dat
 #echo System | trjconv -f ../trajectory.xtc -s ../topol.tpr -o trajINBOX.xtc -pbc res #-b $starttime -e $endtime
 #echo PLA | /m/nbe/home/ollilas1/gromacs/gromacs402/bin/protonate -f trajINBOX.xtc -s ../topol.tpr -o runPROT.gro
 
+####################
 #THIS IS USED FOR ALL ATOM MODELS
-LIPIDname=$(grep M_POPC_M $mappingFILE | awk '{printf "%5s\n",$2}')
-echo $LIPIDname | gmx trjconv -f ../trajectory.xtc -s ../topol.tpr -o runPROT.gro -pbc res
+####################
+# choose one:
+#LIPIDname=$(grep M_POPC_M $mappingFILE | awk '{printf "%5s\n",$2}')
+LIPIDname=$(grep M_DPPC_M $mappingFILE | awk '{printf "%5s\n",$2}')
+! [ -s runPROT.gro ] && echo $LIPIDname | gmx trjconv -n ../../../index.ndx -f ../trajectory.xtc -s ../topol.tpr -o runPROT.gro -pbc res
 
 #CALCULATE HEADGROUP AND GLYCEROL ORDER PARAMETERS
 rm $HGGLYoutname

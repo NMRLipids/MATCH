@@ -25,6 +25,7 @@ fi
 echo $LIPIDname | gmx traj -f centered.xtc -s ../topol.tpr -com -ox com.xvg -xvg none
 com=$(cat com.xvg | awk '{sum1=sum1+$4; sum=sum+1;}END{print sum1/sum}')
 cat electronDENSITY.xvg | awk -v com=$com '{print $1-com" "$2}' > electronDENSITYcent.xvg
+
 slice=$(cat electronDENSITY.xvg | awk '{if(NR==2) print $1}')
 bulkDENS=$(tail -n 1 electronDENSITY.xvg | awk '{print $2}')
 cat electronDENSITYcent.xvg | awk -v slice=$slice -v bulkDENS=$bulkDENS 'BEGIN{scale=0.01;}{for(q=0;q<1000;q=q+1){F[q]=F[q]+($2-bulkDENS)*cos(scale*q*$1)*slice;}}END{for(q=0;q<1000;q=q+1){print 0.1*q*scale" "0.01*sqrt(F[q]*F[q])
