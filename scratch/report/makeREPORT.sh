@@ -1,9 +1,9 @@
 #Location of data
 #ELECTRONS_FILE=/wrk/ollilas1/HGmodel/NMRlipids/NmrLipidsCholXray/scratch/POPCberger/electronsBERGER.dat
-CALC_FORM_FACTOR=~/work/NMRlipids/MATCH/scratch/report/calc_FORM_FACTOR.sh
-REPORT_TEMPLATE=~/work/NMRlipids/MATCH/scratch/report/report.tex
-CALC_ORDER_PARAMETERS=~/work/NMRlipids/MATCH/scratch/report/calc_ORDER_PARAMETERS.sh
-GRO_OP=~/work/NMRlipids/MATCH/scratch/report/gro_OP.awk
+CALC_FORM_FACTOR=~/NMRlipids/MATCH/scratch/report/calc_FORM_FACTOR.sh
+REPORT_TEMPLATE=~/NMRlipids/MATCH/scratch/report/report.tex
+CALC_ORDER_PARAMETERS=~/NMRlipids/MATCH/scratch/report/calc_ORDER_PARAMETERS.sh
+GRO_OP=~/NMRlipids/MATCH/scratch/report/gro_OP.awk
 
 cp $REPORT_TEMPLATE ./
 
