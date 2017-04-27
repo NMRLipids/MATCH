@@ -7,13 +7,13 @@ scriptdir='/home/samuli/NMRlipids/MATCH/scratch/scriptsBYmelcr'
 
 traj_file_name="trajectory.xtc" 
 tpr_file_name="topol.tpr"
-op_def_file="Headgroup_Glycerol_Order_Parameters_SimulationPOPG.def"
+op_def_file="Headgroup_Glycerol_Order_Parameters_SimulationDPPG.def"
 op_out_file="OrdPars.dat"
 traj_pbc_nonwat_file_name="trajectory_nonwat_pbc.xtc" 
 top_file_name="last_frame_nonwat.gro"
 #op_def_file="../../Headgroup_Glycerol_OPs.def"
 top="topol.top"
-lipid="POPG"
+lipid="DPPG"
 f_conc=55430  # in mM/L
 
 if ! [ -s $tpr_file_name ] 
@@ -38,7 +38,7 @@ then
 fi
 
 #CALCULATE ORDER PARAMETERS
-python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $traj_pbc_nonwat_file_name -o $op_out_file && rm $traj_pbc_nonwat_file_name
+python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $traj_pbc_nonwat_file_name -o $op_out_file #&& rm $traj_pbc_nonwat_file_name
 
 
 #getting concentration from topol.top file (if exists)

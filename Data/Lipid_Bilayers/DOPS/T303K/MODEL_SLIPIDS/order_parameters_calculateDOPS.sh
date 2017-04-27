@@ -7,13 +7,13 @@ scriptdir='/home/samuli/NMRlipids/MATCH/scratch/scriptsBYmelcr'
 
 traj_file_name="trajectory.xtc" 
 tpr_file_name="topol.tpr"
-op_def_file="Headgroup_Glycerol_Order_Parameters_SimulationPOPG.def"
+op_def_file="Headgroup_Glycerol_Order_Parameters_SimulationDOPS.def"
 op_out_file="OrdPars.dat"
 traj_pbc_nonwat_file_name="trajectory_nonwat_pbc.xtc" 
 top_file_name="last_frame_nonwat.gro"
 #op_def_file="../../Headgroup_Glycerol_OPs.def"
 top="topol.top"
-lipid="POPG"
+lipid="DOPS"
 f_conc=55430  # in mM/L
 
 if ! [ -s $tpr_file_name ] 
