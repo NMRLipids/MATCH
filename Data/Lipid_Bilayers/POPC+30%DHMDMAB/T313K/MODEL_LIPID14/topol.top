@@ -1,0 +1,26 @@
+#include "amber99sb-ildn.ff/forcefield.itp"
+#include "POPC.itp"
+#include "T7H_GMX.itp"
+#include "tip3pGAFF.itp"
+#include "amber99sb-ildn.ff/ions.itp"
+
+
+[ system ]
+72 POPC in water
+
+[molecules]
+POPC     50
+T7H      21
+SOL      3107
+CL       42
+POPC     50
+T7H      21
+SOL      3107
+
+
+
+
+
+
+  
+
