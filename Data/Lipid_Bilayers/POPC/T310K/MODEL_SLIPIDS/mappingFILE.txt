@@ -142,4 +142,4 @@ M_POPC_M         POPC
 M_NA_M           NA
 M_CA_M           Cal
 M_SOL_M          SOL
-M_CHOL_M         Cholesterol
+M_CHOL_M         CHL1
