@@ -1,7 +1,10 @@
-# From Browning and Seelig Biochemistry, 19, 1262-1270, 1980
+# Quadrupolar splittings from Browning and Seelig
+# Biochemistry, 19, 1262-1270, 1980
 # Table II, sample constains 0.1M NaCl due to buffer
 #
-# Absolute values, I am not aware of data for signs
+# Signs for alpha and beta measured by Tiago Ferreira for NMRlipids IV project
+# Signs for glycerol backbone are assumed to the same as for PC
+# 
 #
 # 0 = gamma
 # 1 = beta
@@ -11,8 +14,8 @@
 # 5 = g1 
 #label Quadrupolar_coupling_1  Quadrupolar_coupling_2 
 0      nan           nan
-1     13.2        nan        
-2     0.9       12.3
-3     25.0        nan
+1     -13.2        nan        
+2     -0.9       12.3
+3     -25.0        nan
 4     nan        nan
 5       nan      nan

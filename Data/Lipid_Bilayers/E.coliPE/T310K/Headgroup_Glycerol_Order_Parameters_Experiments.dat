@@ -1,8 +1,8 @@
 # From Gally et al. Biochemistry 1981, 20, 1826-1831
 # Table I
 #
-# 
-# 
+# Signs are set the same as in PC and to agree with simulations,
+# this should be corrected when experimental signs are available.
 #
 # 0 = gamma
 # 1 = beta
@@ -14,6 +14,6 @@ label Order_Parameter_1(R)  Order_Parameter_2(S)
 0      nan         nan
 1      nan         nan        
 2      nan         nan
-3      24.7        27.3
-4      25.3        nan
-5      17.6        0
+3      -24.7        -27.3
+4      -25.3        nan
+5      -17.6        0
