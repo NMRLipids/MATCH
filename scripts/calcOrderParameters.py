@@ -8,6 +8,7 @@
 
 ------------------------------------------------------------
  Made by J.Melcr,  Last edit 2017/03/21
+ Changes by H. Antila
 ------------------------------------------------------------
  input: Order parameter definitions
         gro and xtc file (or equivalents)
