@@ -1,0 +1,73 @@
+# This file was created Fri Jan 26 11:24:05 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -center -o Kdens.xvg
+# gmx density is part of G R O M A C S:
+#
+# GROningen MAchine for Chemical Simulation
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Density (kg m\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "K"
+     -3.7931          9.61191
+    -3.63828          9.76488
+    -3.48346          10.2752
+    -3.32864          10.2606
+    -3.17382          10.4573
+      -3.019          10.5889
+    -2.86418          11.3598
+    -2.70936          11.0281
+    -2.55454          10.5787
+    -2.39972          9.72839
+     -2.2449          8.37161
+    -2.09008          8.03063
+    -1.93526          6.87937
+    -1.78043          6.19628
+    -1.62561          5.28454
+    -1.47079          3.39052
+    -1.31597          1.71138
+    -1.16115         0.986452
+    -1.00633         0.219869
+   -0.851512        0.0233831
+   -0.696692                0
+   -0.541871                0
+   -0.387051                0
+   -0.232231                0
+  -0.0774102                0
+   0.0774102                0
+    0.232231                0
+    0.387051                0
+    0.541871                0
+    0.696692                0
+    0.851512                0
+     1.00633                0
+     1.16115                0
+     1.31597         0.168357
+     1.47079         0.486421
+     1.62561         0.953829
+     1.78043          1.20687
+     1.93526          1.85686
+     2.09008          2.14658
+      2.2449          2.72195
+     2.39972          3.61083
+     2.55454          4.69553
+     2.70936          5.41603
+     2.86418            6.356
+       3.019          7.38478
+     3.17382          7.84745
+     3.32864          8.50297
+     3.48346           8.3012
+     3.63828          8.62389
+      3.7931          9.57313

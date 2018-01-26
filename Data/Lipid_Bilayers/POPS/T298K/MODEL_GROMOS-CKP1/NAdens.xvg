@@ -1,0 +1,73 @@
+# This file was created Thu Jan 25 11:09:53 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f md-GROMOS-CKP_PME_POPS_v1_400-500ns_skip10.xtc -s for-md-GROMOS-CKP_POPS_298K_v1.tpr -center -o NAdens.xvg
+# gmx density is part of G R O M A C S:
+#
+# Getting the Right Output Means no Artefacts in Calculating Stuff
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Density (kg m\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "NA"
+    -3.58885          6.80168
+    -3.44236          7.39084
+    -3.29588          8.23462
+    -3.14939          10.0954
+    -3.00291          13.1853
+    -2.85643          18.6824
+    -2.70994          26.6405
+    -2.56346           34.455
+    -2.41698          41.3098
+    -2.27049          42.3571
+    -2.12401          38.4383
+    -1.97753          35.4929
+    -1.83104          34.4241
+    -1.68456          34.8095
+    -1.53808          29.3814
+    -1.39159           20.407
+    -1.24511          9.81374
+    -1.09863          3.07715
+   -0.952143         0.424639
+   -0.805659        0.0357283
+   -0.659176                0
+   -0.512692                0
+   -0.366209                0
+   -0.219725                0
+  -0.0732417                0
+   0.0732417                0
+    0.219725                0
+    0.366209                0
+    0.512692                0
+    0.659176                0
+    0.805659       0.00973886
+    0.952143         0.275493
+     1.09863          2.29817
+     1.24511          10.4841
+     1.39159          20.5307
+     1.53808          25.9942
+     1.68456          33.9815
+     1.83104          39.2868
+     1.97753          40.3243
+     2.12401          39.8271
+     2.27049          39.4622
+     2.41698          38.8066
+     2.56346           33.449
+     2.70994          25.9413
+     2.85643          18.4728
+     3.00291          13.3241
+     3.14939           9.9713
+     3.29588          8.33783
+     3.44236          7.28821
+     3.58885          6.80148
