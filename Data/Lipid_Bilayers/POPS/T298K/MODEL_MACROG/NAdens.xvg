@@ -1,0 +1,73 @@
+# This file was created Tue Jan 23 18:22:58 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -center -o NAdens.xvg
+# gmx density is part of G R O M A C S:
+#
+# Getting the Right Output Means no Artefacts in Calculating Stuff
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Density (kg m\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "NA"
+    -4.30207        0.0600619
+    -4.12647        0.0632386
+    -3.95088        0.0379032
+    -3.77528        0.0474086
+    -3.59969        0.0315652
+    -3.42409        0.0410691
+     -3.2485        0.0601255
+    -3.07291        0.0853146
+    -2.89731          1.05561
+    -2.72172          14.3427
+    -2.54612          48.9981
+    -2.37053           95.668
+    -2.19493          100.376
+    -2.01934          91.1038
+    -1.84374          40.1171
+    -1.66815          11.9234
+    -1.49255          2.84994
+    -1.31696        0.0189594
+    -1.14136                0
+    -0.96577                0
+   -0.790176                0
+   -0.614581                0
+   -0.438987                0
+   -0.263392                0
+  -0.0877973                0
+   0.0877973                0
+    0.263392                0
+    0.438987                0
+    0.614581                0
+    0.790176                0
+     0.96577                0
+     1.14136                0
+     1.31696       0.00315867
+     1.49255          2.42963
+     1.66815          23.5889
+     1.84374          36.2591
+     2.01934          84.0596
+     2.19493          110.845
+     2.37053          79.3634
+     2.54612          47.6292
+     2.72172          14.3912
+     2.89731          2.93047
+     3.07291         0.233859
+      3.2485        0.0947823
+     3.42409        0.0979854
+     3.59969        0.0758247
+     3.77528        0.0474194
+     3.95088        0.0758303
+     4.12647         0.085372
+     4.30207        0.0568816

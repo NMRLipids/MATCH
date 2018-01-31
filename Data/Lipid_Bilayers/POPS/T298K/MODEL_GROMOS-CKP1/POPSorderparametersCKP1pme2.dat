@@ -1,0 +1,12 @@
+# From http://nmrlipids.blogspot.com/2017/03/nmrlipids-iv-headgroup-glycerol.html?showComment=1494630737037#c3529046498989580857
+# GROMOS-CKP using the same charges as in the Berger simulations, with the NH3 group having the same charges as in the N(CH3)3 group of the PC lipids.
+# POPS, 1.4 nm verlet cut-off with a dispersion correction, PME, repeat version 2
+
+1 -0.0230325
+2 -0.040745
+2  0.12782
+3 -0.215958
+3 -0.340364
+4 -0.200157 
+5  0.338137
+5 -0.00398344

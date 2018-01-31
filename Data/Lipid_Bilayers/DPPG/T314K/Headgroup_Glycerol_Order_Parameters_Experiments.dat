@@ -1,7 +1,9 @@
 # From Wohlgemuth et al. Biochemistry 19 (1980) 3315-3321
 # Table II with 10mM PIPES and 100mM NaCl
 #
-# Absolute values, I am not aware of data for signs
+# The signs are not measured. They are assigned here to give
+# best agreement with simulations. This is not reliable and
+# should be corrected when signs are measured.
 #
 # This is for 3,1 isomer, 3,3 isomer has forking in alpha
 #

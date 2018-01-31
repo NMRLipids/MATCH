@@ -1,0 +1,10 @@
+# paste <(grep '^[1-5] ' DOPSorderparametersSLIPIDS1.dat) <(grep '^[1-5] ' DOPSorderparametersSLIPIDS2.dat) <(grep '^[1-5] ' Headgroup_Glycerol_Order_Parameters_Simulations.dat) | awk '{max=-2;min=2;for (i=2; i<=NF; i+=2){if($i>max){max=$i};if($i<min){min=$i}}}{print $1, (100*$2+100*$4+100*$6)/300,min,max}' > head-glyc-OPs_ave_min_max.dat
+
+1 -0.0675286 -0.0788824 -0.053905625623
+2 -0.0652515 -0.0778611 -0.0537800565229
+2 0.026787 0.0194815 0.0309259
+3 -0.00340162 -0.0142537 0.00299033
+3 0.0948318 0.0788304959938 0.117706
+4 0.00217665 -0.00416047 0.00744446
+5 0.0111775 -0.00251649506112 0.0251378
+5 -0.16069 -0.163907 -0.157074144873

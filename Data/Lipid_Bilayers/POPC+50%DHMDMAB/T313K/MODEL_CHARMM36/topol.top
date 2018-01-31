@@ -1,0 +1,21 @@
+#include "CHARMMfiles/charmm36.itp"
+#include "CHARMMfiles/POPC.itp"
+#include "CHARMMfiles/CLA.itp"
+#include "CHARMMfiles/TIP3.itp"
+#include "CHARMMfiles/T7H_GMX.itp"
+
+[ system ]
+72 POPC in water
+
+[molecules]
+POPC 50
+T7H  44
+TIP3        3983
+CLA               44
+POPC 50
+T7H  44
+TIP3        3983
+CLA               44
+
+  
+

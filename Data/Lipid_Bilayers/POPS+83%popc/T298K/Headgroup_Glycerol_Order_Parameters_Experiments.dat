@@ -1,7 +1,7 @@
 # From Roux et al. Biochemistry, 29, 7077-7089, 1990
 # Figure 5
 #
-# Absolute values, I am not aware of data for signs
+#  Signs measured by Tiago Ferreira for NMRlipids IV project
 #
 # 0 = gamma
 # 1 = beta
@@ -11,8 +11,8 @@
 # 5 = g1 
 #label Quadrupolar_coupling_1  Quadrupolar_coupling_2 
 0      nan           nan
-1     12.64        nan        
-2     7.97       1.72
+1     -12.64        nan        
+2     7.97       -1.72
 3     nan        nan
 4     nan        nan
 5       nan      nan

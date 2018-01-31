@@ -1,0 +1,17 @@
+#include "../47molF/CHARMMfiles/charmm36.itp"
+#include "../47molF/CHARMMfiles/POPC.itp"
+#include "../47molF/CHARMMfiles/CLA.itp"
+#include "../47molF/CHARMMfiles/TIP3.itp"
+#include "../47molF/CHARMMfiles/T7H_GMX.itp"
+
+[ system ]
+72 POPC in water
+
+[molecules]
+POPC   200
+TIP3   9000
+
+
+
+  
+

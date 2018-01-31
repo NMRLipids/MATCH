@@ -1,0 +1,13 @@
+# From http://nmrlipids.blogspot.com/2017/03/nmrlipids-iv-headgroup-glycerol.html?showComment=1494630737037#c3529046498989580857
+# GROMOS-CKP using the charges for the NH3 group taken from a lysine side-chain (to be more GROMOS consistent).
+# POPS, 1.4 nm verlet cut-off with a dispersion correction, PME, repeat version 2
+
+1 -0.0138892
+2 -0.0418107
+2  0.0407683
+3 -0.195293
+3 -0.345687
+4 -0.175604
+5  0.310824
+5 -0.0193193
+
