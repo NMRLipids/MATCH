@@ -8,6 +8,7 @@
 
 ------------------------------------------------------------
  Made by J.Melcr,  Last edit 2017/03/21
+ Changes by H. Antila
 ------------------------------------------------------------
  input: Order parameter definitions
         gro and xtc file (or equivalents)
@@ -65,9 +66,11 @@ class OrderParameter:
         if len(args) == 0:
             self.avg = None
             self.std = None
+	    self.stem = None	
         elif len(args) == 2:
             self.avg = args[0]
             self.std = args[1]
+	    self.stem = None	
         else:
             raise UserWarning, "Number of optional positional arguments is {len}, not 2 or 0. Args: {args}\nWrong file format?".format(len=len(args), args=args)
         self.traj = []  # for storing OPs
@@ -96,7 +99,14 @@ class OrderParameter:
         """
         # convert to numpy array
         return (np.mean(self.traj), np.std(self.traj))
-
+    @property
+    def get_avg_std_stem_OP(self):
+        """
+        Provides average, stddev and standard error of mean for all OPs in self.traj
+        """
+	std=np.std(self.traj)
+        # convert to numpy array
+        return (np.mean(self.traj),std,std/np.sqrt(len(self.traj)-1))
 
 def read_trajs_calc_OPs(ordPars, top, trajs):
     """
@@ -134,13 +144,17 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
         op.selection = selection
 
     # go through trajectory frame-by-frame
-    # and calculate each OP from the list of OPs
-    # for each residue separately
+    Nres=len(op.selection)
+    Nframes=len(mol.trajectory)	
+    for op in ordPars.values():
+	op.traj=[0]*Nres
     for frame in mol.trajectory:
         for op in ordPars.values():
-            for residue in op.selection:
+	    for i in range(0,Nres):
+		residue=op.selection[i]	
                 S = op.calc_OP(residue)
-                op.traj.append(S)
+		op.traj[i]=op.traj[i]+S/Nframes
+        #print "--", mol.atoms[0].position
 
 
 def parse_op_input(fname):
@@ -196,19 +210,19 @@ if __name__ == "__main__":
     read_trajs_calc_OPs(ordPars, opts.top_fname, trajs)
 
 
-    print "OP Name     mean     stddev "
-    print "----------------------------"
+    print "OP Name     mean     stddev  stem "
+    print "----------------------------------"
     for op in ordPars.values():
-        (op.avg, op.std) = op.get_avg_std_OP
-        print op.name, op.avg, op.std
+        (op.avg, op.std, op.stem) = op.get_avg_std_stem_OP
+        print op.name, op.avg, op.std, op.stem
 
 
     try:
         with open(opts.out_fname,"w") as f:
-            f.write("# OP_name    resname    atom1    atom2    OP_mean   OP_stddev\n\
+            f.write("# OP_name    resname    atom1    atom2    OP_mean   OP_stddev  OP_stem\n\
 #-------------------------------------------------------------\n")
             for op in ordPars.values():
-                f.write( "   ".join([op.name, op.resname, op.atAname, op.atBname, str(op.avg), str(op.std), "\n"]) )
+                f.write( "   ".join([op.name, op.resname, op.atAname, op.atBname, str(op.avg), str(op.std), str(op.stem), "\n"]) )
         print "\nOrderParameters written to >> {fname} <<".format(fname=opts.out_fname)
     except:
         print "ERROR: Problems writing main output file."

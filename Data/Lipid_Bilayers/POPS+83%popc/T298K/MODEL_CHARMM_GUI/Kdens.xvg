@@ -1,0 +1,73 @@
+# This file was created Tue Jan 23 18:32:02 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f run.trr -s run.tpr -center -o Kdens.xvg
+# gmx density is part of G R O M A C S:
+#
+# Giant Rising Ordinary Mutants for A Clerical Setup
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Density (kg m\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "POT"
+    -3.62134          5.93627
+    -3.47353          6.17067
+    -3.32572          6.53344
+    -3.17791          6.78848
+     -3.0301          7.55587
+    -2.88229          8.17471
+    -2.73448          9.11564
+    -2.58667          9.58841
+    -2.43886          8.83554
+    -2.29105          7.79834
+    -2.14324          7.44716
+    -1.99543          8.06395
+    -1.84762          8.73241
+    -1.69981          7.71696
+      -1.552          5.18132
+    -1.40419          2.11395
+    -1.25638         0.564122
+    -1.10857         0.160314
+   -0.960764        0.0052694
+   -0.812954                0
+   -0.665144                0
+   -0.517334                0
+   -0.369524                0
+   -0.221715                0
+  -0.0739049                0
+   0.0739049                0
+    0.221715                0
+    0.369524                0
+    0.517334                0
+    0.665144                0
+    0.812954       0.00632842
+    0.960764         0.102283
+     1.10857         0.470132
+     1.25638          1.16917
+     1.40419           2.7609
+       1.552           4.9288
+     1.69981          7.26385
+     1.84762           8.2409
+     1.99543          7.82192
+     2.14324          7.50676
+     2.29105          8.33359
+     2.43886          8.94316
+     2.58667          8.97174
+     2.73448          8.49891
+     2.88229          7.71614
+      3.0301          7.13772
+     3.17791          6.72887
+     3.32572          6.60834
+     3.47353          6.24312
+     3.62134           6.0263

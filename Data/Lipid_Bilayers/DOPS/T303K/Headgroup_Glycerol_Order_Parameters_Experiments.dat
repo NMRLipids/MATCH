@@ -1,10 +1,7 @@
-# Quadrupolar splittings from Browning and Seelig
-# Biochemistry, 19, 1262-1270, 1980
+# From Browning and Seelig Biochemistry, 19, 1262-1270, 1980
 # Table II, sample constains 0.1M NaCl due to buffer
 #
-# Signs for alpha and beta measured by Tiago Ferreira for NMRlipids IV project
-# Signs for glycerol backbone are assumed to the same as for PC
-# 
+# Signs are taken from POPS experiments made for NMRlipids IV project
 #
 # 0 = gamma
 # 1 = beta
