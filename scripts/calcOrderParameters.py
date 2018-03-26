@@ -41,7 +41,9 @@ class OrderParameter:
        - name of the OP
        - residue name
        - involved atoms (exactly 2)
-       + extra: mean and std.dev. of the OP (when reading-in an already calculated result)
+       + extra: mean, std.dev. & err. estimate 
+                (using standard error of the means from individual residues)
+                of the OP (when reading-in an already calculated result)
     """
     def __init__(self, name, resname, atom_A_name, atom_B_name, *args):
         """
@@ -54,6 +56,13 @@ class OrderParameter:
         self.resname = resname       # name of residue atoms are in
         self.atAname = atom_A_name
         self.atBname = atom_B_name
+        # variables for error estimate -- standard error of the mean (STEM)
+        self.avg   = None   # average/mean value from all residues
+        self.means = None   # list of mean values from each individual residue
+        self.std   = None   # standard deviation (sqrt(variance))
+        self.stem  = None   # STandard Error of the Mean
+        # trajectory as list
+        self.traj = []  # for storing OPs
         for field in self.__dict__:
             if not isinstance(field, str):
                 raise UserWarning, "provided name >> {} << is not a string! \n \
@@ -63,17 +72,16 @@ class OrderParameter:
                     raise RuntimeError, "provided name >> {} << is empty! \n \
                     Cannot use empty names for atoms and OP definitions.".format(field)
         # extra optional arguments allow setting avg,std values -- suitable for reading-in results of this script
-        if len(args) == 0:
-            self.avg = None
-            self.std = None
-	    self.stem = None	
-        elif len(args) == 2:
+        if len(args) == 2:
             self.avg = args[0]
             self.std = args[1]
-	    self.stem = None	
+        elif len(args) == 3:
+            self.avg  = args[0]
+            self.std  = args[1]
+            self.stem = args[2]
         else:
-            raise UserWarning, "Number of optional positional arguments is {len}, not 2 or 0. Args: {args}\nWrong file format?".format(len=len(args), args=args)
-        self.traj = []  # for storing OPs
+            if len(args) != 0:
+                raise UserWarning, "Number of optional positional arguments is {len}, not 3, 2 or 0. Args: {args}\nWrong file format?".format(len=len(args), args=args)
 
 
     def calc_OP(self, atoms):
@@ -92,21 +100,49 @@ class OrderParameter:
         return S
 
 
+    def calc_angle(self, atoms, z_dim=45.0):
+        """
+        calculates the angle between the vector and z-axis in degrees
+        no PBC check!
+        assuming a sim-box-centred membrane --> it's centre ~ z_dim/2
+        Warning: user has to make sure that correct z_dim is supplied,
+                 otherwise - This is a bit DIRTY!!
+                 -- this is taken care of in the main trajectory reader in this module
+        """
+        vec = atoms[1].position - atoms[0].position
+        d = math.sqrt(np.square(vec).sum())
+        cos = vec[2]/d
+        # values for the bottom leaflet are inverted so that 
+        # they have the same nomenclature as the top leaflet
+        cos *= math.copysign(1.0, atoms[0].position[2]-z_dim*0.5)
+        try:
+            angle = math.degrees(math.acos(cos))
+        except ValueError:
+            if abs(cos)>=1.0:
+                print "Cosine is too large = {} --> truncating it to +/-1.0".format(cos)
+                cos = math.copysign(1.0, cos)
+                angle = math.degrees(math.acos(cos))
+        return angle
+
     @property
     def get_avg_std_OP(self):
         """
         Provides average and stddev of all OPs in self.traj
+        This method becomes deprecated after the introduction of error estimation
         """
         # convert to numpy array
         return (np.mean(self.traj), np.std(self.traj))
+
+
     @property
     def get_avg_std_stem_OP(self):
         """
         Provides average, stddev and standard error of mean for all OPs in self.traj
         """
-	std=np.std(self.traj)
-        # convert to numpy array
-        return (np.mean(self.traj),std,std/np.sqrt(len(self.traj)-1))
+        self.means = np.mean(self.traj, axis=0)
+        return ( np.mean(self.traj), 
+                 np.std(self.traj), 
+                 np.std(self.means) )  
 
 def read_trajs_calc_OPs(ordPars, top, trajs):
     """
@@ -142,19 +178,26 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
                 contains {nat} atoms, but should contain exactly 2!".format(
                 atA=op.atAname, atB=op.atBname, nat=res.n_atoms)
         op.selection = selection
+        #Nres=len(op.selection)
+        #Nframes=len(mol.trajectory)	
 
     # go through trajectory frame-by-frame
-    Nres=len(op.selection)
-    Nframes=len(mol.trajectory)	
-    for op in ordPars.values():
-	op.traj=[0]*Nres
+    # and calculate each OP from the list of OPs
+    # for each residue separately
     for frame in mol.trajectory:
         for op in ordPars.values():
-	    for i in range(0,Nres):
-		residue=op.selection[i]	
-                S = op.calc_OP(residue)
-		op.traj[i]=op.traj[i]+S/Nframes
-        #print "--", mol.atoms[0].position
+            # temporary list of order parameters for 
+            # each individual residue for the given frame
+            temp_S = []
+            for residue in op.selection:
+                if "vec" in op.name:
+                    S = op.calc_angle(residue, z_dim=frame.dimensions[2])
+                else:
+                    S = op.calc_OP(residue)
+                temp_S.append(S)
+            # resulting S-trajectory will be a list of lists
+            # so that individual residues can be easily distinquished
+            op.traj.append(temp_S)
 
 
 def parse_op_input(fname):
@@ -210,19 +253,26 @@ if __name__ == "__main__":
     read_trajs_calc_OPs(ordPars, opts.top_fname, trajs)
 
 
-    print "OP Name     mean     stddev  stem "
-    print "----------------------------------"
+    print "OP Name     mean    std    err.est."
+    print "--------------------------------------------------------------------"
     for op in ordPars.values():
-        (op.avg, op.std, op.stem) = op.get_avg_std_stem_OP
-        print op.name, op.avg, op.std, op.stem
+        try:
+            (op.avg, op.std, op.stem) = op.get_avg_std_stem_OP
+            print "{:10s} {: 2.4f} {: 2.4f} {: 2.4f}".format(op.name, op.avg, op.std, op.stem)
+        except:
+            print "{:s} -- problem calculating statistics ".format(op.name)
+    print "--------------------------------------------------------------------"
 
 
     try:
         with open(opts.out_fname,"w") as f:
             f.write("# OP_name    resname    atom1    atom2    OP_mean   OP_stddev  OP_stem\n\
-#-------------------------------------------------------------\n")
+#--------------------------------------------------------------------\n")
             for op in ordPars.values():
-                f.write( "   ".join([op.name, op.resname, op.atAname, op.atBname, str(op.avg), str(op.std), str(op.stem), "\n"]) )
+                f.write( "{:20s} {:7s} {:5s} {:5s} {: 2.5f} {: 2.5f} {: 2.5f} \n".format(
+                         op.name, op.resname, op.atAname, op.atBname,
+                         op.avg, op.std, op.stem)
+                       )
         print "\nOrderParameters written to >> {fname} <<".format(fname=opts.out_fname)
     except:
         print "ERROR: Problems writing main output file."
@@ -231,11 +281,13 @@ if __name__ == "__main__":
     # this single-line format may become soon deprecated, but 
     # it is the format that is used in NMRlipids projects for processing through awk+gnuplot
     try:
-        conc_formatted_line = "conc  {b1} 0  {b2} 0    {a1} 0  {a2} 0".format(
+        conc_formatted_line = "conc  {b1: 2.6f} {b1e: 2.6f}  {b2: 2.6f} {b2e: 2.6f}    {a1: 2.6f} {a1e: 2.6f}  {a2: 2.6f} {a2e: 2.6f}".format(
                               b1=ordPars['beta1'].avg, b2=ordPars['beta2'].avg,
-                              a1=ordPars['alpha1'].avg, a2=ordPars['alpha2'].avg)
+                              a1=ordPars['alpha1'].avg, a2=ordPars['alpha2'].avg,
+                              b1e=ordPars['beta1'].stem, b2e=ordPars['beta2'].stem,
+                              a1e=ordPars['alpha1'].stem, a2e=ordPars['alpha2'].stem)
         print
-        print "Single line format:\nconc  beta1 0  beta2 0  alpha1 0  alpha2 0"
+        print "Single line format:\nconc  beta1 err  beta2 err  alpha1 err  alpha2 err"
         print conc_formatted_line
         with open(opts.out_fname+".line","w") as f:
             f.write(conc_formatted_line)
