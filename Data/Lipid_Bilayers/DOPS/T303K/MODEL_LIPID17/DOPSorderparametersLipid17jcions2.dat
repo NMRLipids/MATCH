@@ -1,0 +1,9 @@
+# grep -v \# DOPS_jcions_rep2_order_parameters.out | sed "s/beta/1/" | sed "s/alpha./2/" | sed "s/g3_./3/" | sed "s/g2_./4/" | sed "s/g1_./5/" | sort -n | awk '{print $1, $5}' > DOPSorderparametersLipid17jcions2.dat 
+1 0.17431569538473257
+2 0.13028864178200666
+2 0.1763693197186625
+3 -0.18306846939046478
+3 -0.232830827443736
+4 -0.22042362795120482
+5 -0.24810876053196823
+5 0.004889056125531516
