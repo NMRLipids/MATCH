@@ -14,6 +14,6 @@ label Order_Parameter_1(R)  Order_Parameter_2(S)
 0      nan         nan
 1      nan         nan        
 2      nan         nan
-3      -24.7        -27.3
-4      -25.3        nan
-5      -17.6        0
+3      -24.7        -27.3  # i.e. g3: |Scd|=0.19365  ,  0.2140  
+4      -25.3        nan    # i.e. g2: |Scd|=0.19835
+5      -17.6        0      # i.e. g1: |Scd|=0.138    ,  0.0

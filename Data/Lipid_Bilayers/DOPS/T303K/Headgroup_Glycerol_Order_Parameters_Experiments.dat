@@ -11,8 +11,8 @@
 # 5 = g1 
 #label Quadrupolar_coupling_1  Quadrupolar_coupling_2 
 0      nan           nan
-1     -13.2        nan        
-2     -0.9       12.3
-3     -25.0        nan
+1     -13.2        nan        # Scd = -0.1035
+2     -0.9       12.3         # Scd = -0.0071  ,  0.0964
+3     -25.0        nan        # Scd = -0.196
 4     nan        nan
 5       nan      nan
