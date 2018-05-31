@@ -8,3 +8,6 @@ mv PCPS-KCl2000_rep1.nc ncFILE.nc
 mv PCPS-KCl2000mm.prmtop prmtopFILE.prmtop
 
 python2.7 ../../../../../scripts/calcOrderParameters.py -i order_parameter_definitions_Lipid14_DOPS.def -t prmtopFILE.prmtop -x ncFILE.nc  -o OrdParsPOPS.dat
+
+paste OrdParPOPS_rep_1.dat OrdParPOPS_rep_2.dat | awk '{if(NR==1){print "#Average over two replicas \n           #order parameter   sem"};if(NR>2){print $1"     "($5+$12)/2"          "($7+$14)/2}}' > OrdParsPOPS.dat
+paste OrdParPOPC_rep_1.dat OrdParPOPC_rep_2.dat | awk '{if(NR==1){print "#Average over two replicas \n           #order parameter   sem"};if(NR>2){print $1"     "($5+$12)/2"          "($7+$14)/2}}' > OrdParsPOPC.dat
