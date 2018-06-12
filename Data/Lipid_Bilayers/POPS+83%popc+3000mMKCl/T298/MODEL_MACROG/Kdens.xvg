@@ -1,0 +1,73 @@
+# This file was created Fri Apr 20 13:49:44 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -o Kdens.xvg -dens number -center
+# gmx density is part of G R O M A C S:
+#
+# Guyana Rwanda Oman Macau Angola Cameroon Senegal
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "K"
+    -4.18813          2.24416
+    -4.01719          2.22046
+    -3.84624          2.23955
+     -3.6753          2.23818
+    -3.50435          2.21041
+    -3.33341          2.17958
+    -3.16247          2.00506
+    -2.99152          1.78428
+    -2.82058           1.4708
+    -2.64963          1.17466
+    -2.47869         0.881265
+    -2.30774         0.620217
+     -2.1368         0.492479
+    -1.96586         0.431062
+    -1.79491         0.416822
+    -1.62397         0.254115
+    -1.45302        0.0958104
+    -1.28208        0.0270555
+    -1.11114       0.00514861
+   -0.940192      0.000109502
+   -0.769248                0
+   -0.598304                0
+    -0.42736                0
+   -0.256416                0
+   -0.085472                0
+    0.085472                0
+    0.256416                0
+     0.42736                0
+    0.598304                0
+    0.769248      0.000875718
+    0.940192        0.0139097
+     1.11114        0.0312017
+     1.28208        0.0535473
+     1.45302         0.116375
+     1.62397          0.22258
+     1.79491         0.366471
+     1.96586         0.440779
+      2.1368         0.515596
+     2.30774         0.648722
+     2.47869         0.860012
+     2.64963          1.12631
+     2.82058          1.46218
+     2.99152          1.75542
+     3.16247          1.98105
+     3.33341          2.11946
+     3.50435          2.19681
+      3.6753          2.23006
+     3.84624          2.26798
+     4.01719          2.26249
+     4.18813          2.22132

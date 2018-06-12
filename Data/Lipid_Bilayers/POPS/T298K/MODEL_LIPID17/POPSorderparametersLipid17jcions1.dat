@@ -1,0 +1,9 @@
+# grep -v \# POPS_jcions_rep1_order_parameters.out | sed "s/beta/1/" | sed "s/alpha./2/" | sed "s/g3_./3/" | sed "s/g2_./4/" | sed "s/g1_./5/" | sort -n | awk '{print $1, $5}' > POPSorderparametersLipid17jcions1.dat
+1 0.19031597273611184
+2 0.14190102853250364
+2 0.1844780540133898
+3 -0.15043232149767244
+3 -0.2588174080993614
+4 -0.21531336674745394
+5 -0.24454834878691634
+5 -0.008022104757970067

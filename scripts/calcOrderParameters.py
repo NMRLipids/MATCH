@@ -12,11 +12,30 @@
  with contributions from:
   H. Antila
 ------------------------------------------------------------
- input: Order parameter definitions
-        gro and xtc file (or equivalents)
- output: order parameters (2 textfiles)
-
+ input: Order parameter definitions [order_parameter_file],
+        gro/tpr [topology_file], and xtc/trr/pbb file [trajectory_file] (or equivalents)
+ output: order parameters [output_file] (2 textfiles)
+ usage : python calcOrderParameters.py -i [order_parameter_file] -t [topology_file] -x [trajectory_file] -o [output_file] 
 --------------------------------------------------------
+ [order_parameter_file] should contain the definitions of order parameters in format:
+ 
+ OP_name1 Residue Carbon_name Hydrogen_name
+ OP_name2 Residue Carbon_name Hydrogen_name
+ .....
+ 
+ Example (CHARMM36):
+ 
+ beta1 POPC C12 H12A
+ beta2 POPC C12 H12B
+ alpha1 POPC C11 H11A
+ alpha2 POPC C11 H11B
+ g3_1 POPC C1 HA
+ g3_2 POPC C1 HB
+ g2_1 POPC C2 HS
+ g1_1 POPC C3 HX
+ g1_2 POPC C3 HY
+ 
+
 """
 
 # coding: utf-8
