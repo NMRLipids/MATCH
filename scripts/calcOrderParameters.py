@@ -186,8 +186,11 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
     # make atom selections for each OP and store it as its attribute for later use with trajectory
     for op in ordPars.values():
         # selection = pairs of atoms, split-by residues
-        selection = mol.select_atoms("resname {rnm} and name {atA} {atB}".format(
-                                    rnm=op.resname, atA=op.atAname, atB=op.atBname)
+        #    this selection format preserves the order of the atoms (atA, atB) independent of their order in the topology
+        selection = mol.select_atoms("resname {rnm} and name {atA}".format(
+                                        rnm=op.resname, atA=op.atAname),
+                                     "resname {rnm} and name {atB}".format(
+                                        rnm=op.resname, atB=op.atBname)
                                     ).atoms.split("residue")
         for res in selection:
             # check if we have only 2 atoms (A & B) selected
