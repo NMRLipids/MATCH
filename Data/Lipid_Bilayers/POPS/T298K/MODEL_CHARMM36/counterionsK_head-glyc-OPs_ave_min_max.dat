@@ -1,0 +1,9 @@
+# paste <(grep '^[1-5] ' POPSorderparametersCHARMM1_counterionsK.dat) <(grep '^[1-5] ' POPSorderparametersCHARMM2_counterionsK.dat) | awk '{max=-2;min=2;for (i=2; i<=NF; i+=2){if($i>max){max=$i};if($i<min){min=$i}}}{print $1, (100*$2+100*$4)/200,min,max}' > counterionsK_head-glyc-OPs_ave_min_max.dat
+1 -0.0662314 -0.0683185 -0.0641443
+2 0.0628027 0.0594299 0.0661756
+2 -0.0463657 -0.0557454 -0.0369859
+3 -0.214808 -0.224778 -0.204837
+3 -0.236532 -0.240731 -0.232332
+4 -0.205804 -0.210426 -0.201182
+5 -0.203606 -0.212462 -0.194749
+5 -0.0501523 -0.0544763 -0.0458282

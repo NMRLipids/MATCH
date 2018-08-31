@@ -1,10 +1,1 @@
-#From http://doi.org/10.5281/zenodo.1120287
-
-wget https://zenodo.org/record/1120287/files/pops.tpr
-wget https://zenodo.org/record/1120287/files/pops.xtc
-wget https://zenodo.org/record/1120287/files/pops.ndx
-wget https://zenodo.org/record/1120287/files/pops.cpt
-mv pops.tpr topol.tpr
-mv pops.xtc traj.xtc
-mv pops.ndx index.ndx
-mv pops.cpt run.cpt
+Data from http://nmrlipids.blogspot.com/2017/03/nmrlipids-iv-headgroup-glycerol.html?showComment=1524081965753#c5190176912574180774 by T. Piggot

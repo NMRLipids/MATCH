@@ -7,17 +7,18 @@
 #------------------------------------------------------------
 # Made by J.Melcr,  Last edit 2017/03/21
 #------------------------------------------------------------
+#
+# Generation of non-water trajectory removed by O.H.S Ollila, 2018/08/23
+#
 
-scriptdir=`dirname $0`
+scriptdir='../../../../../scripts/'
 
-traj_file_name="traj_comp.xtc" #"../traj.trr" 
-traj_pbc_nonwat_file_name="traj_nonwat_pbc.xtc" #"../traj.trr" 
-top_file_name="last_frame_nonwat.gro"
-tpr_file_name="topol.tpr"
-#op_def_file="../../Headgroup_Glycerol_OPs.def"
-op_def_file="../../order_parameter_definitions_POPC_all.def"
-op_out_file="OrdPars.dat"
+traj_file_name="run.trr" #"../traj.trr" 
+tpr_file_name="run.tpr"
+op_def_file="Headgroup_Glycerol_Order_Parameters_SimulationPOPC.def"
+op_out_file="OrdParsPOPC.dat"
 top="topol.top"
+traj_pbc_file_name="traj_pbc.xtc"
 f_conc=55430  # in mM/L
 
 if ! [ -s $tpr_file_name ] 
@@ -27,22 +28,10 @@ then
 fi
 
 # remove PBC:
-! [ -s $traj_pbc_nonwat_file_name ] && echo non-water | gmx trjconv -f $traj_file_name -s topol.tpr -o $traj_pbc_nonwat_file_name -pbc mol
-
-# get a non-water gro-file (topology)
-if ! [ -s $top_file_name ] 
-then
-    if [ -s state.cpt ]
-    then
-        echo non-water | gmx trjconv -f state.cpt -s topol.tpr -o $top_file_name -pbc mol
-    else
-        echo "Couldn't find state.cpt"
-        exit 1
-    fi
-fi
+! [ -s $traj_pbc_file_name ] && echo System | gmx trjconv -f $traj_file_name -s $tpr_file_name -o $traj_pbc_file_name -pbc mol
 
 #CALCULATE ORDER PARAMETERS
-python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $traj_pbc_nonwat_file_name -o $op_out_file && rm $traj_pbc_nonwat_file_name
+python $scriptdir/calcOrderParameters.py -i $op_def_file -t $tpr_file_name -x $traj_pbc_file_name -o $op_out_file
 
 
 #getting concentration from topol.top file (if exists)
