@@ -162,8 +162,8 @@ class OrderParameter:
         """
         self.means = np.mean(self.traj, axis=0)
         return ( np.mean(self.traj), 
-                 np.std(self.traj), 
-                 np.std(self.means) )  
+                 np.std(self.means), 
+                 np.std(self.means)/np.sqrt(len(self.means)) )  
 
 def read_trajs_calc_OPs(ordPars, top, trajs):
     """
