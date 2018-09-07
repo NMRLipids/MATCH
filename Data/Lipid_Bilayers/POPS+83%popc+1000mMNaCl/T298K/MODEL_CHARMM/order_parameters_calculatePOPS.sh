@@ -13,10 +13,10 @@
 
 scriptdir='../../../../../scripts/'
 
-traj_file_name="run.xtc" #"../traj.trr" 
-tpr_file_name="run.tpr"
-op_def_file="Headgroup_Glycerol_Order_Parameters_SimulationPOPC.def"
-op_out_file="OrdParsPOPC.dat"
+traj_file_name="traj.xtc" 
+tpr_file_name="topol.tpr"
+op_def_file="Headgroup_Glycerol_Order_Parameters_SimulationPOPS.def"
+op_out_file="OrdParsPOPS.dat"
 top="topol.top"
 traj_pbc_file_name="traj_pbc.xtc"
 f_conc=55430  # in mM/L
