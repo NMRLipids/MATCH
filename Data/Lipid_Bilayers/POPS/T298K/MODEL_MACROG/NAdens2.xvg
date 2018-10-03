@@ -1,0 +1,73 @@
+# This file was created Thu Sep 27 14:40:02 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -dens number -o NAdens.xvg -center
+# gmx density is part of G R O M A C S:
+#
+# GROwing Monsters And Cloning Shrimps
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "NA"
+     -4.1048       0.00106257
+    -3.93726       0.00159384
+    -3.76971       0.00185859
+    -3.60217       0.00292114
+    -3.43463       0.00265434
+    -3.26708        0.0120286
+    -3.09954         0.030523
+      -2.932        0.0970663
+    -2.76446         0.376038
+    -2.59691          1.21618
+    -2.42937          2.10389
+    -2.26183          2.48127
+    -2.09429          2.32659
+    -1.92674          1.41147
+     -1.7592         0.624422
+    -1.59166        0.0911629
+    -1.42411      0.000797471
+    -1.25657                0
+    -1.08903                0
+   -0.921485                0
+   -0.753943                0
+     -0.5864                0
+   -0.418857                0
+   -0.251314                0
+  -0.0837714                0
+   0.0837714                0
+    0.251314                0
+    0.418857                0
+      0.5864                0
+    0.753943                0
+    0.921485                0
+     1.08903                0
+     1.25657                0
+     1.42411                0
+     1.59166       0.00468789
+      1.7592         0.422129
+     1.92674          1.62354
+     2.09429          2.80086
+     2.26183          2.85181
+     2.42937          2.19908
+     2.59691           1.4808
+     2.76446         0.484799
+       2.932        0.0117719
+     3.09954      0.000708898
+     3.26708      0.000973341
+     3.43463      0.000531208
+     3.60217      0.000705468
+     3.76971      0.000707278
+     3.93726      0.000441931
+      4.1048      0.000797422

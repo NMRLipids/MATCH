@@ -1,0 +1,10 @@
+# grep -v \# POPS_rep1_OPs.out | sed "s/beta/1/" | sed "s/alpha./2/" | sed "s/g3_./3/" | sed "s/g2/4/" | sed "s/g1_./5/" | sort -n | awk '{print $1, $2}' > POPS_rep1_OPs.dat 
+ 
+1 -0.01757
+2 -0.00637
+2 -0.02795
+3 -0.09201
+3 -0.20899
+4 -0.14666
+5 -0.04415
+5 -0.11072

@@ -1,0 +1,9 @@
+# grep -v \# POPS_ff99ions_rep2_order_parameters.out | sed "s/beta/1/" | sed "s/alpha./2/" | sed "s/g3_./3/" | sed "s/g2_./4/" | sed "s/g1_./5/" | sort -n | awk '{print $1, $5}' > POPSorderparametersLipid17ff99ions2.dat
+1 0.13108055854692385
+2 0.14056371141743657
+2 0.15373462369222735
+3 -0.17443088267350937
+3 -0.27568786847821186
+4 -0.23664656241139476
+5 -0.27140345119740933
+5 0.029387026550135767
