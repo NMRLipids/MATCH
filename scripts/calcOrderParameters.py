@@ -45,7 +45,7 @@ import numpy as np
 import math
 import os, sys
 from optparse import OptionParser
-
+from collections import OrderedDict
 
 bond_len_max=1.5  # in Angstroms, max distance between atoms for reasonable OP calculation (PBC and sanity check)
 bond_len_max_sq=bond_len_max**2
@@ -237,7 +237,8 @@ def parse_op_input(fname):
     returns : dictionary 
         with OrderParameters class instances
     """
-    ordPars = {}
+   # Using ordered dict since it preserves the read-in order. Might come in handy when comparing to experiments.
+    ordPars = OrderedDict()
     try:
         with open(fname,"r") as f:
             for line in f.readlines():
