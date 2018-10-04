@@ -1,0 +1,73 @@
+# This file was created Thu Feb 22 14:43:25 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f md-Slipids_LJ-PME_POPS_v1_400-500ns_skip10.xtc -s for-md-Slipids_10A_cut-off_LJ-PME_POPS_298K_v1.tpr -center -o NAdens.xvg -dens number
+# gmx density is part of G R O M A C S:
+#
+# GROtesk MACabre and Sinister
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "NA"
+    -3.80835         0.174163
+     -3.6529          0.17748
+    -3.49746         0.201171
+    -3.34202         0.221764
+    -3.18658         0.263808
+    -3.03113         0.334188
+    -2.87569         0.421097
+    -2.72025         0.575163
+     -2.5648         0.715779
+    -2.40936         0.921208
+    -2.25392          1.21372
+    -2.09848          1.59099
+    -1.94303           1.9569
+    -1.78759          1.55235
+    -1.63215         0.710494
+    -1.47671         0.154959
+    -1.32126        0.0155531
+    -1.16582       0.00113637
+    -1.01038                0
+   -0.854935                0
+   -0.699492                0
+   -0.544049                0
+   -0.388607                0
+   -0.233164                0
+  -0.0777213                0
+   0.0777213                0
+    0.233164                0
+    0.388607                0
+    0.544049                0
+    0.699492                0
+    0.854935                0
+     1.01038                0
+     1.16582      0.000436533
+     1.32126         0.014677
+     1.47671         0.138363
+     1.63215         0.700079
+     1.78759          1.54812
+     1.94303          1.81832
+     2.09848          1.56396
+     2.25392          1.23285
+     2.40936         0.948282
+      2.5648         0.773933
+     2.72025         0.601274
+     2.87569         0.454488
+     3.03113         0.330421
+     3.18658         0.259605
+     3.34202         0.226841
+     3.49746         0.194548
+      3.6529         0.180197
+     3.80835         0.183163

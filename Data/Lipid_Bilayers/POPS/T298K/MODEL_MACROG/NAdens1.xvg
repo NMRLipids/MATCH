@@ -1,0 +1,73 @@
+# This file was created Thu Sep 27 14:42:47 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -dens number -o NAdens1.xvg -center
+# gmx density is part of G R O M A C S:
+#
+# Green Red Orange Magenta Azure Cyan Skyblue
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "NA"
+    -4.03937       0.00123794
+     -3.8745       0.00115109
+    -3.70963      0.000973849
+    -3.54475      0.000707901
+    -3.37988      0.000972426
+    -3.21501       0.00203436
+    -3.05014       0.00389541
+    -2.88527        0.0618682
+    -2.72039         0.365754
+    -2.55552          1.25493
+    -2.39065          2.39304
+    -2.22578          2.55038
+     -2.0609          2.57232
+    -1.89603          1.65548
+    -1.73116         0.648128
+    -1.56629        0.0323008
+    -1.40141                0
+    -1.23654                0
+    -1.07167                0
+   -0.906798                0
+   -0.741925                0
+   -0.577053                0
+   -0.412181                0
+   -0.247308                0
+  -0.0824362                0
+   0.0824362                0
+    0.247308                0
+    0.412181                0
+    0.577053                0
+    0.741925                0
+    0.906798                0
+     1.07167                0
+     1.23654                0
+     1.40141      0.000795442
+     1.56629        0.0783247
+     1.73116         0.431973
+     1.89603          1.67367
+      2.0609          2.75785
+     2.22578          2.44861
+     2.39065          2.34997
+     2.55552          1.24225
+     2.72039         0.107375
+     2.88527       0.00867358
+     3.05014       0.00947439
+     3.21501       0.00230133
+     3.37988       0.00229964
+     3.54475       0.00309717
+     3.70963       0.00168182
+      3.8745       0.00176786
+     4.03937       0.00168236

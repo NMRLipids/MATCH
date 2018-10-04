@@ -1,0 +1,16 @@
+#include "./ions_ffgmx.itp"
+;#include "./ions_lipid.itp"
+#include "./popc.itp"
+#include "./pops.itp"
+#include "./ions.itp"
+#include "spc.itp"
+
+[ system ]
+; Name
+popc_pops
+
+[ molecules ]
+POPC              102
+POPS              26
+SOL               4290
+Na                26

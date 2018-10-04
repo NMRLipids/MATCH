@@ -1,0 +1,73 @@
+# This file was created Thu Sep 27 15:01:47 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -dens number -o Kdens.xvg -center
+# gmx density is part of G R O M A C S:
+#
+# Georgetown Riga Oslo Madrid Amsterdam Chisinau Stockholm
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "K"
+    -3.48472         0.315316
+    -3.34249         0.312992
+    -3.20026         0.366252
+    -3.05802         0.433579
+    -2.91579         0.531361
+    -2.77355         0.677635
+    -2.63132         0.793378
+    -2.48909         0.855556
+    -2.34685         0.866997
+    -2.20462         0.898588
+    -2.06239         0.991839
+    -1.92015           1.1538
+    -1.77792          1.16841
+    -1.63569         0.924592
+    -1.49345         0.574249
+    -1.35122         0.253793
+    -1.20899        0.0737439
+    -1.06675         0.016013
+   -0.924518        0.0026874
+   -0.782285      0.000233484
+   -0.640051                0
+   -0.497817                0
+   -0.355584                0
+    -0.21335                0
+  -0.0711168                0
+   0.0711168                0
+     0.21335                0
+    0.355584                0
+    0.497817                0
+    0.640051                0
+    0.782285      0.000583812
+    0.924518       0.00175363
+     1.06675        0.0163629
+     1.20899        0.0767661
+     1.35122         0.269112
+     1.49345          0.59949
+     1.63569         0.964101
+     1.77792          1.13068
+     1.92015          1.12421
+     2.06239          1.02042
+     2.20462         0.907046
+     2.34685         0.871685
+     2.48909         0.855606
+     2.63132         0.763014
+     2.77355          0.65659
+     2.91579         0.539048
+     3.05802         0.441412
+     3.20026         0.376316
+     3.34249         0.320017
+     3.48472         0.301428

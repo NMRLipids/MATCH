@@ -1,0 +1,9 @@
+# grep -v \# DOPS_ff99ions_rep2_order_parameters.out | sed "s/beta/1/" | sed "s/alpha./2/" | sed "s/g3_./3/" | sed "s/g2_./4/" | sed "s/g1_./5/" | sort -n | awk '{print $1, $5}' > DOPSorderparametersLipid17ff99ions2.dat
+1 0.1315173816442812
+2 0.11364521012203382
+2 0.15009453044828658
+3 -0.1788058884274621
+3 -0.24895186514010326
+4 -0.22530557956797978
+5 -0.2507690106562237
+5 0.01954546488748475

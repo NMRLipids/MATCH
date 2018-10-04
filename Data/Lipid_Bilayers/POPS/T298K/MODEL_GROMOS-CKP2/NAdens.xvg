@@ -1,0 +1,73 @@
+# This file was created Thu Feb 22 15:12:26 2018
+# Created by:
+#                  :-) GROMACS - gmx density, VERSION 5.1.4 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Command line:
+#   gmx density -f md-GROMOS-CKP_GROMOS-HG_PME_POPS_v1_400-500ns_skip10.xtc -s for-md-GROMOS-CKP_GROMOS-HG_POPS_298K_v1.tpr -center -o NAdens.xvg -dens number
+# gmx density is part of G R O M A C S:
+#
+# GROningen MAchine for Chemical Simulation
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "NA"
+    -3.57119         0.175179
+    -3.42543         0.190807
+    -3.27966         0.213801
+     -3.1339         0.270449
+    -2.98814         0.351099
+    -2.84237         0.500248
+    -2.69661         0.704543
+    -2.55085         0.961481
+    -2.40509          1.14909
+    -2.25932          1.11903
+    -2.11356          1.00408
+     -1.9678         0.968761
+    -1.82203          1.09517
+    -1.67627         0.993746
+    -1.53051         0.688146
+    -1.38475         0.327737
+    -1.23898         0.140392
+    -1.09322        0.0391288
+   -0.947458       0.00638185
+   -0.801695                0
+   -0.655932                0
+    -0.51017                0
+   -0.364407                0
+   -0.218644                0
+  -0.0728814                0
+   0.0728814                0
+    0.218644                0
+    0.364407                0
+     0.51017                0
+    0.655932                0
+    0.801695                0
+    0.947458        0.0016177
+     1.09322        0.0210911
+     1.23898          0.11148
+     1.38475         0.368308
+     1.53051         0.774603
+     1.67627          1.01838
+     1.82203          1.01618
+      1.9678         0.996062
+     2.11356          1.07819
+     2.25932          1.17471
+     2.40509          1.09055
+     2.55085         0.878695
+     2.69661         0.675628
+     2.84237         0.475005
+     2.98814          0.35222
+      3.1339         0.262157
+     3.27966         0.221098
+     3.42543         0.188012
+     3.57119         0.177022
