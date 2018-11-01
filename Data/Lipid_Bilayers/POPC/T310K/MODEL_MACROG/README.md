@@ -4,8 +4,10 @@
 wget https://zenodo.org/record/13877/files/md_chol0.xtc
 wget https://zenodo.org/record/13877/files/md_chol0.tpr
 
-mv md_chol0.xtc trajectory.xtc
+mv md_chol0.xtc traj.xtc
 mv md_chol0.tpr topol.tpr
+
+sh order_parameters_calculatePOPC.sh
 
 cp ../../../../../../MATCH/MAPPING/mappingPOPCmacrog.txt ./mappingFILE.txt
 awk -f ../../../../../scripts/makeELECTRONSpopc.awk mappingFILE.txt > electronsLIPID.dat

@@ -13,10 +13,11 @@
 
 scriptdir='../../../../../scripts/'
 
-traj_file_name="run.trr" #"../traj.trr" 
-tpr_file_name="run.tpr"
-op_def_file="Headgroup_Glycerol_Order_Parameters_SimulationPOPC.def"
-op_out_file="OrdParsPOPC.dat"
+traj_file_name="traj.xtc" 
+tpr_file_name="topol.tpr"
+conf_file_name="conf.gro"
+op_def_file="defFILE.def"
+op_out_file="OrdPars.dat"
 top="topol.top"
 traj_pbc_file_name="traj_pbc.xtc"
 f_conc=55430  # in mM/L
@@ -31,7 +32,7 @@ fi
 ! [ -s $traj_pbc_file_name ] && echo System | gmx trjconv -f $traj_file_name -s $tpr_file_name -o $traj_pbc_file_name -pbc mol
 
 #CALCULATE ORDER PARAMETERS
-python $scriptdir/calcOrderParameters.py -i $op_def_file -t $tpr_file_name -x $traj_pbc_file_name -o $op_out_file
+python $scriptdir/calcOrderParameters.py -i $op_def_file -t $conf_file_name -x $traj_pbc_file_name -o $op_out_file
 
 
 #getting concentration from topol.top file (if exists)

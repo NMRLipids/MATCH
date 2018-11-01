@@ -1,9 +1,11 @@
-# Data from https://doi.org/10.5281/zenodo.1210255
+# Data from https://doi.org/10.5281/zenodo.1404040
 
-wget https://zenodo.org/record/1210256/files/PCPS-KCl3000.tpr
-wget https://zenodo.org/record/1210256/files/PCPS-KCl3000.xtc
-wget https://zenodo.org/record/1210256/files/PCPS-KCl3000.cpt
+wget https://zenodo.org/record/1404040/files/PCPS_KCL_3000.tpr
+wget https://zenodo.org/record/1404040/files/PCPS_KCL_3000.xtc
+mv PCPS_KCL_3000.tpr topol.tpr
+mv PCPS_KCL_3000.xtc traj.xtc
 
-gmx trjconv -f PCPS-KCl3000.xtc -s PCPS-KCl3000.tpr -b 75000 -o traj.xtc
-mv PCPS-KCl3000.tpr topol.tpr
-mv PCPS-KCl3000.cpt run.cpt
+gmx density -f traj.xtc -s topol.tpr -center -o Kdens.xvg
+
+sh order_parameters_calculatePOPC.sh
+sh order_parameters_calculatePOPS.sh
