@@ -4,3 +4,6 @@ Data from a simulation with Lipid17 force field and ff99 parameters for ions, TI
 Gromacs 2018 was used. Trajectory has 400 ns. 
 Made by Josef Melcr, parameters available [here](https://github.com/jmelcr/ecc_lipids/tree/master/topologies).
 
+files at:
+https://doi.org/10.5281/zenodo.1487906
+
