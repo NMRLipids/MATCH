@@ -113,7 +113,7 @@ echo "Centering done"
 
 #calculating the electron densities. Modified from Samuli's script by Hanne
 
-cp ../electronsLIPID.dat ./electrons.dat
+
 SOLname=$(grep M_SOL_M ${mappingFile} | awk '{printf "%5s\n",$2}')
 echo $SOLname | gmx density -f centered.xtc -s ${tprFile} -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
 LIPIDname=$(grep M_POPC_M  ${mappingFile} | awk '{printf "%5s\n",$2}')
