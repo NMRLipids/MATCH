@@ -108,16 +108,16 @@ else
   echo "    gmx trjconv failed, exiting."
   exit
 fi
-rm center.output foo.xtc foo2.xtc foo.ndx
+rm center.output foo.xtc foo2.xtc
 echo "Centering done"
 
 #calculating the electron densities. Modified from Samuli's script by Hanne
 
 
 SOLname=$(grep M_SOL_M ${mappingFile} | awk '{printf "%5s\n",$2}')
-echo $SOLname | gmx density -f centered.xtc -s ${tprFile} -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
+echo -e "${G1g3name}\n${SOLname}" | gmx density -center -n foo.ndx -f ${outFile} -s ${tprFile} -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
 LIPIDname=$(grep M_POPC_M  ${mappingFile} | awk '{printf "%5s\n",$2}')
-echo $LIPIDname | gmx density -f centered.xtc -s ${tprFile} -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
+echo -e "${G1g3name}\n${LIPIDname}" | gmx density -center -n foo.ndx -f ${outFile} -s ${tprFile} -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
 
 
 if [ -e "electronDENSITYchol.xvg" ];
@@ -126,13 +126,11 @@ then
 else
     paste electronDENSITYsol.xvg electronDENSITYlipid.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
 fi
-echo $LIPIDname | gmx traj -f centered.xtc -s ${tprFile} -com -ox com.xvg -xvg none
 
-com=$(cat com.xvg | awk '{sum1=sum1+$4; sum=sum+1;}END{print sum1/sum}')
-cat electronDENSITY.xvg | awk -v com=$com '{print $1-com" "$2}' > electronDENSITYcent.xvg
-
-slice=$(cat electronDENSITY.xvg | awk '{if(NR==2) print $1}')
+slice=$(head -n2 electronDENSITY.xvg | awk '{dz=$1-prev;prev=$1}END{print dz}')
 bulkDENS=$(tail -n 1 electronDENSITY.xvg | awk '{print $2}')
-cat electronDENSITYcent.xvg | awk -v slice=$slice -v bulkDENS=$bulkDENS 'BEGIN{scale=0.01;}{for(q=0;q<2000;q=q+1){F[q]=F[q]+($2-bulkDENS)*cos(scale*q*$1)*slice;}}END{for(q=0;q<1000;q=q+1){print 0.1*q*scale" "0.01*sqrt(F[q]*F[q])
+cat electronDENSITY.xvg | awk -v slice=$slice -v bulkDENS=$bulkDENS 'BEGIN{scale=0.01;}{for(q=0;q<2000;q=q+1){F[q]=F[q]+($2-bulkDENS)*cos(scale*q*$1)*slice;}}END{for(q=0;q<1000;q=q+1){print 0.1*q*scale" "0.01*sqrt(F[q]*F[q])
 }}' 
-cp electronDENSITYcent.xvg Electron_Density_From_Simulation.dat
+cp electronDENSITY.xvg Electron_Density_From_Simulation.dat
+
+rm foo.ndx
