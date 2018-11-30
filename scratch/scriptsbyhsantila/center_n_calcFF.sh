@@ -1,14 +1,14 @@
 #!/bin/bash
-# Script that makes the molecules whole, centers the bilayer in box and outputs the form factor
+# Script that makes the molecules whole, centers the bilayer in box and outputs the form factor.
 # Authors: M. Miettinen, S. Ollila, H. Antila
 #
 # Usage example: ./center_n_calcFF mappingPOPCcharmm.txt popcRUN2.tpr popcRUN2.xtc centered.xtc
 #
-
-
-# Files needed: Mapping file, .tpr, trajectory, and electrons.dat where the number of electrons in each atomtype present is specified.
-# Dependencies: gromacs
-# Outputted files: centered trajectory, solvent electron density, lipid electron density, total electron density, centered total electron density, list of centes-of-mass
+# Files needed:    Mapping file, .tpr, trajectory, and electrons.dat where the number of electrons in each atomtype present is specified.
+# Dependencies:    gromacs v 5 or later
+# Assumptions:     Bilayer is symmetric
+# Outputted files: centered trajectory, solvent electron density, lipid electron density, total electron density, centered total electron density
+#
 # Form factor outputted in STDOUT
 
 echo
@@ -91,10 +91,14 @@ G1g3name=`grep M_G3_M $mappingFile | awk '{print $2}'`
 echo 'The name of the g3 carbon:' $G1g3name
 # ... and put them all to an index file:
 rm foo.ndx
-echo -e "a ${G1g3name}\nq" | gmx make_ndx -f $tprFile -o foo.ndx >& make_ndx.output
+intoGMXmake_ndx=`echo ${G1g3name} | sed 's/ / \| a /g'`
+echo -e "a ${intoGMXmake_ndx}\nq" | gmx make_ndx -f $tprFile -o foo.ndx >& make_ndx.output
 rm make_ndx.output
+# ... and find the name given to their group in the index file:
+G1g3name=`grep '\[' foo.ndx | tail -n1 | awk '{print $2}'`
+
 # Center around CoM of g3 carbons, that is, center of bilayer, and make molecules whole:
-echo "Centering around the center of mass of ${G1g3name} atoms..."
+echo "Centering around the center of mass of index group ${G1g3name}..."
 echo -e "${G1g3name}\nSystem" \
     | gmx trjconv -center -pbc mol \
 	  -n foo.ndx \
@@ -111,7 +115,7 @@ fi
 rm center.output foo.xtc foo2.xtc
 echo "Centering done"
 
-#calculating the electron densities. Modified from Samuli's script by Hanne
+#calculating the electron densities. Modified from Samuli's script by Hanne and Markus
 
 
 SOLname=$(grep M_SOL_M ${mappingFile} | awk '{printf "%5s\n",$2}')
