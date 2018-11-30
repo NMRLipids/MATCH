@@ -1,24 +1,29 @@
 #!/bin/bash
 # Script that makes the molecules whole, centers the bilayer in box and outputs the form factor.
+#
 # Authors: M. Miettinen, S. Ollila, H. Antila
 #
-# Usage example: ./center_n_calcFF mappingPOPCcharmm.txt popcRUN2.tpr popcRUN2.xtc centered.xtc
+# Usage example: ./center_n_calcFF mappingMolecules.txt mappingAtoms.txt popcRUN2.tpr popcRUN2.xtc centered.xtc
 #
-# Files needed:    Mapping file, .tpr, trajectory, and electrons.dat where the number of electrons in each atomtype present is specified.
+# Files needed:    Mapping files for [1] whole molecules (contains also the name of the corresponding
+#                  electron file) and [2] atoms; [3] .tpr file; [4] trajectory; and [5] files where
+#                  the number of electrons in each atomtype present is specified.
 # Dependencies:    gromacs v 5 or later
 # Assumptions:     Bilayer is symmetric
-# Outputted files: centered trajectory, solvent electron density, lipid electron density, total electron density, centered total electron density
+# Outputted files: centered trajectory, molecule-wise electron density profiles, total electron density profile
 #
 # Form factor outputted in STDOUT
 
 echo
 # Check the inputs:
-if [ $4 ]
+if [ $5 ]
 then
-  mappingFile=$1 # File containing the names of atoms in this FF.
-  tprFile=$2     # The input tpr-file.
-  xtcFile=$3     # The input xtc-file.
-  outFile=$4     # Name for the output xtc file.  
+  molMappFile=$1 # File containing the names of molecules in this FF, and the names of the corresponding electron files.
+  mappingFile=$2 # File containing the names of atoms in this FF.
+  tprFile=$3     # The input tpr-file.
+  xtcFile=$4     # The input xtc-file.
+  outFile=$5     # Name for the output xtc file.
+  echo "Mapping: ${molMappFile}"
   echo "Mapping: ${mappingFile}"
   echo "TPR in:  ${tprFile}"
   echo "XTC in:  ${xtcFile}"
@@ -117,19 +122,27 @@ echo "Centering done"
 
 #calculating the electron densities. Modified from Samuli's script by Hanne and Markus
 
-
-SOLname=$(grep M_SOL_M ${mappingFile} | awk '{printf "%5s\n",$2}')
-echo -e "${G1g3name}\n${SOLname}" | gmx density -center -n foo.ndx -f ${outFile} -s ${tprFile} -ei electrons.dat -dens electron -o electronDENSITYsol.xvg -xvg none -sl 100
-LIPIDname=$(grep M_POPC_M  ${mappingFile} | awk '{printf "%5s\n",$2}')
-echo -e "${G1g3name}\n${LIPIDname}" | gmx density -center -n foo.ndx -f ${outFile} -s ${tprFile} -ei electrons.dat -dens electron -o electronDENSITYlipid.xvg -xvg none -sl 100
-
-
-if [ -e "electronDENSITYchol.xvg" ];
-then
-    paste electronDENSITYsol.xvg electronDENSITYlipid.xvg electronDENSITYchol.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
-else
-    paste electronDENSITYsol.xvg electronDENSITYlipid.xvg | awk '{print $1" "$2+$4+$6}' > electronDENSITY.xvg
-fi
+echo
+echo "Calculating density profiles..."
+rm electronDENSITY.xvg; touch electronDENSITY.xvg
+for mol in $(awk '{print $1}' ${molMappFile}); do
+    molName=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n",$2}')
+    echo "- ${molName} -"
+    eleFile=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n", $3}')
+    echo -e "${G1g3name}\n${molName}" | \
+      gmx density -center -n foo.ndx -f ${outFile} -s ${tprFile} -ei ${eleFile} -dens electron -o electronDENSITY_$molName.xvg -xvg none -sl 100 >& density.output
+    if [ `grep -c gcq density.output` == 1 ]
+    then
+      echo "The groups selected for centering and for density calculation:"
+      grep Selected density.output
+      rm density.output
+      paste electronDENSITY.xvg electronDENSITY_$molName.xvg | awk '{print $1,$2+$4}' > foo.xvg
+      mv foo.xvg electronDENSITY.xvg
+    else
+      echo "gmx density failed, exiting."
+    exit
+    fi
+done
 
 slice=$(head -n2 electronDENSITY.xvg | awk '{dz=$1-prev;prev=$1}END{print dz}')
 bulkDENS=$(tail -n 1 electronDENSITY.xvg | awk '{print $2}')
