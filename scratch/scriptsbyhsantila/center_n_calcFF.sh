@@ -3,28 +3,33 @@
 #
 # Authors: M. Miettinen, S. Ollila, H. Antila
 #
-# Usage example: ./center_n_calcFF mappingMolecules.txt mappingAtoms.txt popcRUN2.tpr popcRUN2.xtc centered.xtc
+# Usage example: ./center_n_calcFF mappingMolecules.txt popcRUN2.tpr popcRUN2.xtc centered.xtc
 #
-# Files needed:    Mapping files for [1] whole molecules (contains also the name of the corresponding
-#                  electron file) and [2] atoms; [3] .tpr file; [4] trajectory; and [5] files where
-#                  the number of electrons in each atomtype present is specified.
+# Files needed:    [1] Mapping file for whole molecules(*), [2] the .tpr file, [3] the trajectory file.
 # Dependencies:    gromacs v 5 or later
-# Assumptions:     Bilayer is symmetric
-# Outputted files: centered trajectory, molecule-wise electron density profiles, total electron density profile
+# Assumptions:     Bilayer is symmetric, and contains at least one species with a glycerol backbone.
+# Outputted files: the centered trajectory (name for this expected as the last input),
+#                  molecule-wise electron density profiles, total electron density profile,
+#                  the form factor.
 #
-# Form factor outputted in STDOUT
+# (*) example for pure POPC system:
+# kuvaja:scriptsbyhsantila bb$ cat mappingMolecules.txt
+# M_POPC_M	POPC	electrons_POPC.dat	mappingPOPCcharmm.txt
+# M_SOL_M	TIP3	electrons_TIP3.dat	mappingSOLcharmm.txt
+# kuvaja:scriptsbyhsantila bb$
+# So columns are: [1] Molecul name in NMRlipids; [2] molecule name in this force field; [3] name of
+# the file containing atomwise numbers of electrons, as required by gmx density; [4] name of the
+# mappingfile between NMRlipids atom naming scheme and the atom names in this force field.
 
 echo
 # Check the inputs:
-if [ $5 ]
+if [ $4 ]
 then
   molMappFile=$1 # File containing the names of molecules in this FF, and the names of the corresponding electron files.
-  mappingFile=$2 # File containing the names of atoms in this FF.
-  tprFile=$3     # The input tpr-file.
-  xtcFile=$4     # The input xtc-file.
-  outFile=$5     # Name for the output xtc file.
+  tprFile=$2     # The input tpr-file.
+  xtcFile=$3     # The input xtc-file.
+  outFile=$4     # Name for the output xtc file.
   echo "Mapping: ${molMappFile}"
-  echo "Mapping: ${mappingFile}"
   echo "TPR in:  ${tprFile}"
   echo "XTC in:  ${xtcFile}"
   echo "XTC out: ${outFile}"
@@ -56,13 +61,18 @@ echo
 #
 ### --- 2/3: Center around one lipid tail CH3 to guarantee all lipids in the same box --- ###
 #
-# Find the name in this FF: 
-G1CH3name=`grep M_G1C[0-9]*_M $mappingFile | tail -n1 | awk '{print $2}'`
+# Find the name in this FF:
+if [ -e foobar.map ]; then rm foobar.map; fi
+for mol in $(awk '{print $1}' ${molMappFile}); do
+    mapName=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n",$4}')
+    cat ${mapName} >> foobar.map
+done
+G1CH3name=`grep M_G1C[0-9]*_M foobar.map | tail -n1 | awk '{print $2}'`
 echo 'The name of the CH3 carbon in sn-1 chain:' $G1CH3name
 #
 # Find the number of the CH3 atom in the last lipid:
 echo -e "a ${G1CH3name}\nq" | gmx make_ndx -f $tprFile -o foo.ndx >& make_ndx.output
-G1CH3number=`tail -n1 foo.ndx | awk '{print $NF}'`
+G1CH3number=`grep '[0-9]' foo.ndx | tail -n1 | awk '{print $NF}'`
 echo "The atom number of the last lipid's CH3: " $G1CH3number
 rm make_ndx.output
 #
@@ -92,19 +102,27 @@ echo
 #
 # Find the g3 carbons:
 # ... find their name in this FF:
-G1g3name=`grep M_G3_M $mappingFile | awk '{print $2}'`
-echo 'The name of the g3 carbon:' $G1g3name
-# ... and put them all to an index file:
-rm foo.ndx
-intoGMXmake_ndx=`echo ${G1g3name} | sed 's/ / \| a /g'`
-echo -e "a ${intoGMXmake_ndx}\nq" | gmx make_ndx -f $tprFile -o foo.ndx >& make_ndx.output
-rm make_ndx.output
-# ... and find the name given to their group in the index file:
-G1g3name=`grep '\[' foo.ndx | tail -n1 | awk '{print $2}'`
+echo '[ g3carbons ]' >> foo.ndx
+for mol in $(awk '{print $1}' ${molMappFile}); do
+    molName=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n",$2}')
+    mapName=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n",$4}')
+    numG3s=`grep -c 'M_.*G3_M' ${mapName}`
+    if [ `grep -c 'M_.*G3_M' ${mapName}` != 0 ]
+    then
+      G1g3name=`grep 'M_.*G3_M' ${mapName} | awk '{print $2}'`
+      echo 'The name of the g3 carbon(s) in' ${molName}':' ${G1g3name}
+      intoGMXmake_ndx=`echo ${G1g3name} | sed 's/ / \| a /g'`
+      echo -e "del 0-1000\na ${intoGMXmake_ndx} & r ${molName}\nq" | gmx make_ndx -f $tprFile -o foobar.ndx >& make_ndx.output
+      grep -v '\[' foobar.ndx >> foo.ndx
+      rm make_ndx.output foobar.ndx
+    else
+      echo 'No g3 carbons in' ${molName}'.'
+    fi
+done
 
 # Center around CoM of g3 carbons, that is, center of bilayer, and make molecules whole:
-echo "Centering around the center of mass of index group ${G1g3name}..."
-echo -e "${G1g3name}\nSystem" \
+echo "Centering around the center of mass of index group g3carbons..."
+echo -e "g3carbons\nSystem" \
     | gmx trjconv -center -pbc mol \
 	  -n foo.ndx \
 	  -f foo2.xtc \
@@ -129,7 +147,7 @@ for mol in $(awk '{print $1}' ${molMappFile}); do
     molName=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n",$2}')
     echo "- ${molName} -"
     eleFile=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n", $3}')
-    echo -e "${G1g3name}\n${molName}" | \
+    echo -e "g3carbons\n${molName}" | \
       gmx density -center -n foo.ndx -f ${outFile} -s ${tprFile} -ei ${eleFile} -dens electron -o electronDENSITY_$molName.xvg -xvg none -sl 100 >& density.output
     if [ `grep -c gcq density.output` == 1 ]
     then
@@ -144,10 +162,14 @@ for mol in $(awk '{print $1}' ${molMappFile}); do
     fi
 done
 
+echo
+echo "Calculating form factor..."
 slice=$(head -n2 electronDENSITY.xvg | awk '{dz=$1-prev;prev=$1}END{print dz}')
 bulkDENS=$(tail -n 1 electronDENSITY.xvg | awk '{print $2}')
 cat electronDENSITY.xvg | awk -v slice=$slice -v bulkDENS=$bulkDENS 'BEGIN{scale=0.01;}{for(q=0;q<2000;q=q+1){F[q]=F[q]+($2-bulkDENS)*cos(scale*q*$1)*slice;}}END{for(q=0;q<1000;q=q+1){print 0.1*q*scale" "0.01*sqrt(F[q]*F[q])
-}}' 
-cp electronDENSITY.xvg Electron_Density_From_Simulation.dat
+}}' > Form_Factor_From_Simulation.dat
+mv electronDENSITY.xvg Electron_Density_From_Simulation.dat
+rm foo.ndx foobar.map
 
-rm foo.ndx
+#cat Electron_Density_From_Simulation.dat #-- uncomment if want FF to STDOUT
+
