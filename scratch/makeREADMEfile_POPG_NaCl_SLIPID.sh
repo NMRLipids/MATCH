@@ -5,12 +5,12 @@ fractionOFmolecule=100
 lipid=500lipids
 temperature=T310K
 model=MODEL_SLIPID
-dataDOI=https://zenodo.org/record/2562853#.XKsmAkN7mHl
-trajectoryLINK=https://zenodo.org/record/2562853/files/m_400_500_POPG_slipid.xtc
-topolLINK=
-confLINK=
+dataDOI=https://zenodo.org/record/2633773#.XKxen0N7mHl
+trajectoryLINK=https://zenodo.org/record/2633773/files/m_400_500_POPG_slipid.xtc
+topolLINK=https://zenodo.org/record/2633773/files/topol.tpr
+confLINK=https://zenodo.org/record/2633773/files/conf.gro
 trajectoryNAME1=md_400_500_POPG_slipid.xtc
-topolNAME=md_04.tpr
+topolNAME=topol.tpr
 confNAME=conf.gro
 #defFILE=Headgroup_Glycerol_Order_Parameters_Simulation
 
