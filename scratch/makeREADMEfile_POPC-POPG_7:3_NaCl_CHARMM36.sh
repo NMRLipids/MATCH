@@ -1,17 +1,17 @@
 system=Lipid_Bilayers
 molecule1=POPG
-molecule2=POPE
+molecule2=POPC
 molecule3=150mNaCl
-fractionOFmolecule=25
+fractionOFmolecule=30
 lipid=500lipids
 temperature=T310K
 model=MODEL_CHARMM36
-dataDOI=https://zenodo.org/record/2580153#.XKy_N0N7mHk
-trajectoryLINK=https://zenodo.org/record/2580153/files/dm_popg_pope_3_1_charmm.xtc
-topolLINK=https://zenodo.org/record/2580153/files/md_03.tpr
+dataDOI=https://zenodo.org/record/2580902#.XKzF90N7mHk
+trajectoryLINK=https://zenodo.org/record/2580902/files/dm_popc_popg_7_3_charmm.xtc
+topolLINK=https://zenodo.org/record/2580902/files/md_05.tprr
 confLINK=
-trajectoryNAME1=dm_popg_pope_3_1_charmm.xtc
-topolNAME=md_03.tpr
+trajectoryNAME1=dm_popc_popg_7_3_charmm.xtc
+topolNAME=md_05.tpr
 confNAME=conf.gro
 #defFILE=Headgroup_Glycerol_Order_Parameters_Simulation
 
