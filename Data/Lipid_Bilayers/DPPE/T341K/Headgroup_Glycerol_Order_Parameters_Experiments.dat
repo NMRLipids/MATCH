@@ -2,7 +2,8 @@
 # Values taken from Table II in Wohlgemuth et al. Biochemistry 19, 3315-3321 (1980)  [reported for comparison in table II]
 #  -- at 341 K, 5 degrees above the Lo-Ld transition temperature 63 C.
 #
-# Absolute values, I am not aware of data for signs
+# Signs from POPE experiment by Tiago Ferreira for NMRlipids IV
+# https://github.com/NMRLipids/NMRlipidsIVPEandPG/blob/master/Figs/POPEexperiment.pdf
 #
 # 0 = gamma
 # 1 = beta
@@ -12,7 +13,7 @@
 # 5 = g1 
 #label Quadrupolar_coupling_1  Quadrupolar_coupling_2 
 0      nan           nan
-1     3.7        nan     # i.e. beta:  |Scd|=0.0029
+1    -3.7        nan     # i.e. beta:  |Scd|=0.0029
 2     10.3       9.8     # i.e. alpha: |Scd|=0.080752  ,  0.076832
 3     nan        nan
 4     nan        nan

@@ -1,0 +1,17 @@
+# Measured by Tiago Ferreira for NMRlipids IV, delivered by email
+# the sign for beta is positive, but value is not resolved
+# the sign for gamma seems negative, but value is not resolved
+#
+# 0 = gamma
+# 1 = beta
+# 2 = alpha
+# 3 = g3 
+# 4 = g2 
+# 5 = g1 
+#label Order_parameter_1  Order_parameter_2   error
+0          nan                  nan            nan
+1          nan                  nan            nan
+2         0.09                  nan            0.01
+3        -0.19                  nan            0.01
+4        -0.16                  nan            0.01
+5        -0.11                 -0.01           0.01
