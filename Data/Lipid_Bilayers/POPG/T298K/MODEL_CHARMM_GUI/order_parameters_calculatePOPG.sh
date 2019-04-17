@@ -23,7 +23,7 @@ then
 fi
 
 # remove PBC:
-! [ -s $traj_pbc_nonwat_file_name ] && echo $lipid | gmx trjconv -f $traj_file_name -s $tpr_file_name -o $traj_pbc_nonwat_file_name -pbc mol
+! [ -s $traj_pbc_nonwat_file_name ] && echo $lipid | gmx trjconv -f $traj_file_name -s $tpr_file_name -o $traj_pbc_nonwat_file_name -pbc mol -b 20000
 
 # get a non-water gro-file (topology)
 if ! [ -s $top_file_name ] 
