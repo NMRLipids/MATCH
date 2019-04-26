@@ -1,0 +1,75 @@
+# This file was created Fri Apr 26 14:15:28 2019
+# Created by:
+#                     :-) GROMACS - gmx density, 2019.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /Volumes/Lacie5tb/NMRlipids/MATCH/Data/Lipid_Bilayers/POPS+80%popc+102mMCaCl/T310K/MODEL_Berger
+# Command line:
+#   gmx density -f trajectory.xtc -s topol.tpr -o CLdens.xvg -center -dens number -ng 2
+# gmx density is part of G R O M A C S:
+#
+# Good gRace! Old Maple Actually Chews Slate
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "XCA"
+@ s1 legend "XCl"
+    -3.90455                0       0.112703
+    -3.74518                0        0.11759
+    -3.58581                0       0.123602
+    -3.42644                0       0.129887
+    -3.26707                0       0.144376
+     -3.1077                0        0.15644
+    -2.94833                0       0.161882
+    -2.78896      1.71103e-05       0.155871
+    -2.62959       0.00519649       0.128318
+    -2.47022        0.0532306      0.0820623
+    -2.31086         0.107247      0.0419176
+    -2.15149         0.161503       0.014516
+    -1.99212         0.453847     0.00278632
+    -1.83275         0.630796    0.000169795
+    -1.67338         0.348444              0
+    -1.51401         0.129855              0
+    -1.35464         0.101046              0
+    -1.19527        0.0423879              0
+     -1.0359       0.00385275              0
+   -0.876531      0.000254649              0
+   -0.717162                0              0
+   -0.557793                0              0
+   -0.398423                0              0
+   -0.239054                0              0
+  -0.0796847                0              0
+   0.0796847                0              0
+    0.239054                0              0
+    0.398423                0              0
+    0.557793                0              0
+    0.717162                0              0
+    0.876531                0              0
+      1.0359                0              0
+     1.19527       0.00389203              0
+     1.35464        0.0602921              0
+     1.51401          0.20855              0
+     1.67338         0.404774    1.70213e-05
+     1.83275         0.664798    0.000424525
+     1.99212         0.510983     0.00258096
+     2.15149         0.169786      0.0117791
+     2.31086        0.0145667      0.0326582
+     2.47022      3.39451e-05      0.0726553
+     2.62959                0       0.124066
+     2.78896                0       0.158234
+     2.94833                0       0.167694
+      3.1077                0       0.155017
+     3.26707                0       0.141273
+     3.42644                0       0.126762
+     3.58581                0       0.120828
+     3.74518                0       0.115949
+     3.90455                0       0.114843
