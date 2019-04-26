@@ -1,4 +1,3 @@
-#Individual		
 M_G1_M		C2
 M_G1H1_M		H1 
 M_G1H2_M		H2
