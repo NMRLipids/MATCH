@@ -18,3 +18,5 @@ cp ../../../../../scripts/orderParm_defs/order_parameter_definitions_slipids_POP
 gmx trjconv -f traj.xtc -s topol.tpr -o conf.gro -dump 0
 
 sh ../../../../../scripts/order_parameters_calculate.sh
+sh ../../../../../scripts/calc_FORM_FACTOR.sh
+python ../../../../../scripts/NMRL3_analysis/analysis_NMRL3.py
