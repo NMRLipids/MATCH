@@ -165,7 +165,11 @@ done
 echo
 echo "Calculating form factor..."
 slice=$(head -n2 electronDENSITY.xvg | awk '{dz=$1-prev;prev=$1}END{print dz}')
-bulkDENS=$(awk '{s+=$2}END{print s/NR}' electronDENSITY.xvg)
+
+minbox=$(head -n 1 electronDENSITYsol.xvg | awk '{print $1}')
+maxbox=$(tail -n 1 electronDENSITYsol.xvg | awk '{print $1}')
+bulkDENS=$(awk -v minb=$minbox -v maxb=$maxbox '{if ($1<0.33+minb || $1>maxb-0.33)  {n=n+1; s=s+$2}} END{print s/n}' electronDENSITYsol.xvg)
+
 cat electronDENSITY.xvg | awk -v slice=$slice -v bulkDENS=$bulkDENS 'BEGIN{scale=0.01;}{for(q=0;q<2000;q=q+1){F[q]=F[q]+($2-bulkDENS)*cos(scale*q*$1)*slice;}}END{for(q=0;q<1000;q=q+1){print 0.1*q*scale" "0.01*sqrt(F[q]*F[q])
 }}' > Form_Factor_From_Simulation.dat
 mv electronDENSITY.xvg Electron_Density_From_Simulation.dat
