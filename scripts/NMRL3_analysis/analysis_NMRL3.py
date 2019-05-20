@@ -293,7 +293,7 @@ for key in keys_h_n_g:
 fit_h_n_g=math.sqrt(fit_h_n_g/len(keys_h_n_g))
 	
 fitnessf.write("fitness from headgr "+str(fit_headgr)+'\n')	
-fitnessf.write("fitness from glys "+str(fit_headgr)+'\n')	
+fitnessf.write("fitness from glys "+str(fit_glys)+'\n')	
 fitnessf.write("fitness from headgr+glys "+str(fit_h_n_g)+'\n')	
 fitnessf.write("fitness from sn1 "+str(fit_sn1)+'\n')	
 fitnessf.write("fitness from sn2 "+str(fit_sn2)+'\n')	
