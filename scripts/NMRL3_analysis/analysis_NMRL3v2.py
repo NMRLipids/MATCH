@@ -363,7 +363,7 @@ if len(exp_op)!=0:
 		fit_s=math.sqrt(fit_s/n)
 	
 fitnessf.write("fitness from headgr "+str(fit_headgr)+'\n')	
-fitnessf.write("fitness from glys "+str(fit_headgr)+'\n')	
+fitnessf.write("fitness from glys "+str(fit_glys)+'\n')	
 fitnessf.write("fitness from headgr+glys "+str(fit_h_n_g)+'\n')	
 fitnessf.write("fitness from sn1 "+str(fit_sn1)+'\n')	
 fitnessf.write("fitness from sn2 "+str(fit_sn2)+'\n')	
