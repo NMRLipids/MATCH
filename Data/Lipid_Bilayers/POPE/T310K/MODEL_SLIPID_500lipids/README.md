@@ -14,3 +14,4 @@ cp  ../../../../../scripts/orderParm_defs/order_parameter_definitions_MODEL_SLIP
 sh ../../../../../scripts/order_parameters_calculate.sh
 mv OrdPars.dat OrdParsPOPE.dat
 
+sh ~/NMRlipids/MATCH/scripts/grepOPdata3.sh OrdPars.dat  > Headgroup_Glycerol_Order_Parameters_Simulation.dat

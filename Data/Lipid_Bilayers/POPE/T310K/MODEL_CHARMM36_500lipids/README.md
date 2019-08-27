@@ -14,3 +14,4 @@ cp  ../../../../../scripts/orderParm_defs/order_parameter_definitions_MODEL_CHAR
 sh ../../../../../scripts/order_parameters_calculate.sh
 mv OrdPars.dat OrdParsPOPE.dat
 
+sh /home/osollila/NMRlipids/MATCH/scripts/grepOPdata3.sh OrdParsPOPE.dat
