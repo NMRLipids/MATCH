@@ -1,10 +1,10 @@
-#Original data from https://zenodo.org/record/3257649#.XROi0CZ7nLA
+#Original data from https://zenodo.org/record/3378992
 
 
 
-wget  https://zenodo.org/record/3257649/files/m_400_500_system_POPG_GROMOS.xtc
+wget  https://zenodo.org/record/3378992/files/m_400_500_system_POPG_GROMOS.xtc
 wget 
-wget  https://zenodo.org/record/3257649/files/files/topol.top
+wget  https://zenodo.org/record/3378992/files/files/topol.top
 
 mv  md_010.tpr topol.tpr
 mv  conf.gro conf.gro
