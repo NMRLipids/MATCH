@@ -32,14 +32,14 @@ echo "System" \
 	  -f $xtcFile \
 	  -s $tprFile \
 	  -o foo.xtc >& center.output
-if [ `grep -c gcq center.output` == 1 ]
-then
+#if [ `grep -c gcq center.output` == 1 ]
+#then
   grep Selected center.output
   grep frame center.output
-else
-  echo "    gmx trjconv failed, exiting."
-  exit
-fi
+#else
+#  echo "    gmx trjconv failed, exiting."
+#  exit
+#fi
 #
 echo
 #
@@ -67,13 +67,13 @@ echo -e "centralAtom\nSystem" \
 	  -f foo.xtc \
 	  -s $tprFile \
 	  -o foo2.xtc >& center.output
-if [ `grep -c gcq center.output` == 1 ]
-then
+#if [ `grep -c gcq center.output` == 1 ]
+#then
   grep Selected center.output
-else
-  echo "    gmx trjconv failed, exiting."
-  exit
-fi
+#else
+#  echo "    gmx trjconv failed, exiting."
+#  exit
+#fi
 #
 echo
 #
@@ -95,12 +95,12 @@ echo -e "${G1g3name}\nSystem" \
 	  -f foo2.xtc \
 	  -s $tprFile \
 	  -o $outFile >& center.output
-if [ `grep -c gcq center.output` == 1 ]
-then
+#if [ `grep -c gcq center.output` == 1 ]
+#then
   grep Selected center.output
-else
-  echo "    gmx trjconv failed, exiting."
-  exit
-fi
+#else
+#  echo "    gmx trjconv failed, exiting."
+#  exit
+#fi
 rm center.output foo.xtc foo2.xtc foo.ndx
 echo

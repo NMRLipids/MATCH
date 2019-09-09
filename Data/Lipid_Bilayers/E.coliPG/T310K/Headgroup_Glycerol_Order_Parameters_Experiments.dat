@@ -3,9 +3,8 @@
 # Average value of measurements with differently labelled lipids
 # are given for g1R, g1S and alpha
 # 
-# The signs are not measured. They are assigned here to give
-# best agreement with simulations. This is not reliable and
-# should be corrected when signs are measured.
+# According the experiments by Tiago Ferreira of POPG for NMRlipids IV,
+# the signs for alpha and beta are positive, gamma and glycerol backbone are negative
 #
 # 0 = gamma
 # 1 = beta

@@ -16,12 +16,17 @@ wget https://zenodo.org/record/13285/files/endCONF.gro
 wget https://zenodo.org/record/13279/files/popc.itp
 
 gunzip popcCHOL50molPER0-25ns.trr.gz popcCHOL50molPER25-50ns.trr.gz
-gmx trjcat -f popcCHOL50molPER0-25ns.trr popcCHOL50molPER25-50ns.trr -o trajectory.xtc
+gmx trjcat -f popcCHOL50molPER0-25ns.trr popcCHOL50molPER25-50ns.trr -o traj.xtc
 mv POPCchol5.tpr topol.tpr
 
 rm popcCHOL50molPER0-25ns.trr popcCHOL50molPER25-50ns.trr
 
-cp /m/nbe/work/ollilas1/HGmodel/NMRlipids/NmrLipidsCholXray/MAPPING/mappingPOPCberger.txt ./mappingFILE.txt
-cp /m/nbe/work/ollilas1/HGmodel/NMRlipids/lipid_ionINTERACTION/scratch/ffgmx2berger.hdb ./ffgmx2.hdb
-cp /m/nbe/work/ollilas1/HGmodel/NMRlipids/NmrLipidsCholXray/scratch/POPCberger/electronsBERGER.dat ./electronsLIPID.dat
-cp /m/nbe/work/ollilas1/HGmodel/NMRlipids/NmrLipidsCholXray/scratch/POPCberger/electronsHOLTJE.dat ./electronsCHOL.dat 
+cp ../../../../../../MATCH/MAPPING/mappingPOPCberger.txt ./mappingFILE.txt
+cp ../../../../../../lipid_ionINTERACTION/scratch/ffgmx2berger.hdb ./ffgmx2.hdb
+cp ../../../../../../NmrLipidsCholXray/scratch/POPCberger/electronsBERGER.dat ./electronsLIPID.dat
+cp ../../../../../../NmrLipidsCholXray/scratch/POPCberger/electronsHOLTJE.dat ./electronsCHOL.dat 
+
+echo System | gmx trjconv -f traj.xtc -s topol.tpr -o conf.gro -dump 0
+
+sh ../../../../../scripts/calc_FORM_FACTOR.sh
+python ../../../../../scripts/NMRL3_analysis/analysis_NMRL3.py

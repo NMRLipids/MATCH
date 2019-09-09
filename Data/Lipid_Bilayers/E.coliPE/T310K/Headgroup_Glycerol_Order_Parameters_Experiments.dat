@@ -1,8 +1,8 @@
 # From Gally et al. Biochemistry 1981, 20, 1826-1831
 # Table I
 #
-# Signs are set the same as in PC and to agree with simulations,
-# this should be corrected when experimental signs are available.
+# Signs from POPE experiment by Tiago Ferreira for NMRlipids IV
+# https://github.com/NMRLipids/NMRlipidsIVPEandPG/blob/master/Figs/POPEexperiment.pdf
 #
 # 0 = gamma
 # 1 = beta

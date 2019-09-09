@@ -1,3 +1,5 @@
+# Data available at https://doi.org/10.5281/zenodo.1493190
+
 gmx trjconv -f run.trr -s topol.tpr -o traj.xtc -b 50000
 
 sh order_parameters_calculatePOPC.sh

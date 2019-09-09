@@ -134,9 +134,9 @@ M_G3N6C3H1_M     H15A
 M_G3N6C3H2_M     H15B
 M_G3N6C3H3_M     H15C
 #Water
-M_OW_M           OH2
-M_HW1_M          H1
-M_HW2_M          H2
+M_OW_M           OW
+M_HW1_M          HW1
+M_HW2_M          HW2
 #Whole molecules
 M_POPC_M         POPC
 M_NA_M           NA

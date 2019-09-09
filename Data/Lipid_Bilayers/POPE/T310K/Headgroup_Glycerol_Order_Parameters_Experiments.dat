@@ -1,0 +1,15 @@
+# Measured by Tiago Ferreira for NMRlipids IV project
+# https://github.com/NMRLipids/NMRlipidsIVPEandPG/blob/master/Figs/POPEexperiment.pdf
+#
+# 0 = gamma
+# 1 = beta
+# 2 = alpha
+# 3 = g3 
+# 4 = g2 
+# 5 = g1 
+#label order_parameter_1 order_parameter_2  error
+1        -0.03          nan                 0.01
+2         0.08          nan                 0.01
+3        -0.21          nan                 0.01
+4        -0.19          nan                 0.01
+5        -0.13          0                   0.01

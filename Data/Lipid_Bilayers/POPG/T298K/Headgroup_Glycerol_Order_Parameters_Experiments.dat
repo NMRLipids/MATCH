@@ -1,7 +1,8 @@
 # From Borle and Seelig Chem. Phys. Lipids 36 (1985) 263-283
 # Table II with 10mM PIPES
 #
-# Absolute values, I am not aware of data for signs
+# According the experiments by Tiago Ferreira for NMRlipids IV,
+# the signs for alpha and beta are positive
 #
 # 0 = gamma
 # 1 = beta
