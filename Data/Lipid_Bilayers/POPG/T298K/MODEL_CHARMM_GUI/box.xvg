@@ -1,14 +1,15 @@
-# This file was created Tue Feb 21 21:23:39 2017
+# This file was created Fri Apr 12 16:29:41 2019
 # Created by:
-#                   :-) GROMACS - gmx traj, VERSION 5.1.2 (-:
+#                       :-) GROMACS - gmx traj, 2018.2 (-:
 # 
-# Executable:   /usr/bin/gmx
-# Data prefix:  /usr
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/local/osollila/NMRlipids/MATCH/Data/Lipid_Bilayers/POPG/T298K/MODEL_CHARMM_GUI
 # Command line:
 #   gmx traj -f run2.xtc -s run2.tpr -ob
 # gmx traj is part of G R O M A C S:
 #
-# Glycine aRginine prOline Methionine Alanine Cystine Serine
+# GROup of MAchos and Cynical Suckers
 #
 @    title "Box vector elements"
 @    xaxis  label "Time (ps)"

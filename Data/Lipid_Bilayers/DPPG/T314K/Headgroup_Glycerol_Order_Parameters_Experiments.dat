@@ -1,9 +1,8 @@
 # From Wohlgemuth et al. Biochemistry 19 (1980) 3315-3321
 # Table II with 10mM PIPES and 100mM NaCl
 #
-# The signs are not measured. They are assigned here to give
-# best agreement with simulations. This is not reliable and
-# should be corrected when signs are measured.
+# According the experiments by Tiago Ferreira of POPG for NMRlipids IV,
+# the signs for alpha and beta are positive, gamma is negative
 #
 # This is for 3,1 isomer, 3,3 isomer has forking in alpha
 #
@@ -14,7 +13,7 @@
 # 4 = g2 
 # 5 = g1 
 #label Quadrupolar_coupling_1  Quadrupolar_coupling_2 
-0      0.5       0.8
+0    -0.5       -0.8
 1     3.3        nan        
 2     10.3       nan
 3     nan        nan

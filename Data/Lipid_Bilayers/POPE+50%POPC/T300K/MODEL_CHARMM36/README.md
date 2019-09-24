@@ -9,7 +9,7 @@ wget  https://zenodo.org/record/1306821/files/step6.4_equilibration.gro
 mv  md.tpr topol.tpr
 mv  step6.4_equilibration.gro conf.gro
 
-mv  md_dt100_OK_centered.xtc traj.xtc
+echo System | gmx trjconv -f md_dt100_OK_centered.xtc -o traj.xtc -b 50000
 cp  ../../../../../scripts/orderParm_defs/order_parameter_definitions_MODEL_CHARMM36_POPC.def defFILE.def
 sh ../../../../../scripts/order_parameters_calculate.sh
 mv OrdPars.dat OrdParsPOPC.dat

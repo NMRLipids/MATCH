@@ -2,7 +2,10 @@
 # http://dx.doi.org/10.1039/C2CP42738A
 #
 # Signs determined from independent experiments, as discussed
-# in https://github.com/NMRLipids/NMRLipids_V-Review/blob/master/Manuscript/review_manu.pdf
+# in https://doi.org/10.1016/j.bbamem.2016.01.019
+#
+# Error bars determined as discussed in
+# https://doi.org/10.1016/j.bbamem.2016.01.019 and http://dx.doi.org/10.1021/acs.jpcb.5b04878
 #
 # 0 = gamma
 # 1 = beta
@@ -10,10 +13,10 @@
 # 3 = g3 
 # 4 = g2 
 # 5 = g1 
-label Order_Parameter_1  Order_Parameter_2
-0      0.00111083        nan
-1     -0.04478707        nan        
-2      0.05589248        nan
-3      -0.23134863        nan
-4     -0.20691616        nan
-5       0.00000000       -0.14991575
+label Order_Parameter_1  Order_Parameter_2   error
+0      0.00111083        nan                 0.02
+1     -0.04478707        nan                 0.02
+2      0.05589248        nan                 0.02 
+3      -0.23134863        nan                0.02
+4     -0.20691616        nan                 0.02
+5       0.00000000       -0.14991575         0.02

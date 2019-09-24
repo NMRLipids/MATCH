@@ -259,7 +259,7 @@ for key in keys_all:
 	indx=opnames.index(key)
 
 	fit_s=fit_s+(exp_op[indx]-sim_op[indx])**2
-	fitnessf.write(opnames[indx]+" "+str(exp_op[indx])+" "+str(sim_op[indx])+" "+str(sim_stem[indx])+" "+str(abs(sim_op[indx]-exp_op[indx]))+"\n")
+	fitnessf.write(opnames[indx]+" "+str(exp_op[indx])+" "+str(sim_op[indx])+" "+str(sim_stem[indx])+" "+str(exp_op[indx]-sim_op[indx])+"\n")
 fit_s=math.sqrt(fit_s/len(exp_op))
 
 fit_sn1=0

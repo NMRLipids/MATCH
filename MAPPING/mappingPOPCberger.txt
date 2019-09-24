@@ -8,6 +8,7 @@ M_NA_M           NA
 M_CL_M           CL
 M_CA_M           CA
 M_SOL_M          SOL
+M_CHOL_M         CHOL
 #Atoms
 M_G1_M          C32
 M_G1H1_M	H321	

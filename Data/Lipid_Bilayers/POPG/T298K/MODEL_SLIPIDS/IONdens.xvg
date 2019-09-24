@@ -1,0 +1,74 @@
+# This file was created Thu Apr 11 11:46:08 2019
+# Created by:
+#                     :-) GROMACS - gmx density, 2018.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/local/osollila/NMRlipids/MATCH/Data/Lipid_Bilayers/POPG/T298K/MODEL_SLIPIDS
+# Command line:
+#   gmx density -f trajectory.xtc -s topol.tpr -dens number -center -o IONdens.xvg
+# gmx density is part of G R O M A C S:
+#
+# GROningen Mixture of Alchemy and Childrens' Stories
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "NA"
+    -3.41725           0.2268
+    -3.27777         0.234438
+    -3.13829         0.246358
+    -2.99881         0.278037
+    -2.85933         0.322203
+    -2.71985         0.388911
+    -2.58037         0.482975
+    -2.44089         0.622577
+    -2.30141         0.802727
+    -2.16193          1.00121
+    -2.02245          1.18349
+    -1.88297          1.31434
+    -1.74349          1.29773
+    -1.60401          1.08534
+    -1.46453         0.741673
+    -1.32505          0.39892
+    -1.18558         0.167424
+     -1.0461        0.0561376
+   -0.906616        0.0142268
+   -0.767137       0.00446555
+   -0.627657       0.00256408
+   -0.488178      0.000331785
+   -0.348699                0
+   -0.209219                0
+  -0.0697397                0
+   0.0697397                0
+    0.209219                0
+    0.348699                0
+    0.488178                0
+    0.627657                0
+    0.767137       0.00113174
+    0.906616        0.0120721
+      1.0461        0.0528463
+     1.18558         0.150666
+     1.32505         0.363796
+     1.46453         0.694316
+     1.60401          1.02065
+     1.74349          1.23993
+     1.88297           1.2975
+     2.02245          1.20487
+     2.16193          1.04973
+     2.30141         0.856055
+     2.44089         0.658497
+     2.58037         0.517362
+     2.71985         0.405215
+     2.85933         0.330617
+     2.99881         0.281997
+     3.13829         0.257074
+     3.27777         0.236103
+     3.41725         0.226203

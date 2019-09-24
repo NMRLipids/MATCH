@@ -1,8 +1,12 @@
 # MATCH
 
-This is a development version of database and machinery which compares atomistic resolution
-structures of biomolecules between classical molecular dynamics simulation models and experiments.
+This is a databank of lipid bilayer MD simulations, experimental NMR and scattering data contributed to the NMRlipids project (nmrlipids.blogspot.fi).
 
 The <b>Data</b> folder contains a subfolder for each system. The <b>system subfolders</b> contain experimental 
-NMR and scattering data.  The <b>system subfolders</b> contain also folders for available models. These folders
-contain the <b>automatically generated quality reports which are called report.pdf</b>.
+NMR and scattering data.  The <b>system subfolders</b> contain also folders for available models.
+The systems are also indexed in a SQL database in www.nmrlipids.fi
+
+Automatic analysis routines are currently available for C-H bond order parameters
+https://github.com/NMRLipids/MATCH/blob/master/scripts/order_parameters_calculate.sh
+and for scattering form factors
+https://github.com/NMRLipids/MATCH/blob/master/scripts/calc_FORM_FACTOR.sh
