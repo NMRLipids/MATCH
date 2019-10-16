@@ -1,0 +1,74 @@
+# This file was created Fri Oct  4 10:17:50 2019
+# Created by:
+#                     :-) GROMACS - gmx density, 2018.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/local/osollila/NMRlipids/MATCH/Data/Lipid_Bilayers/POPG/T310K/MODEL_LIPID17_500lipids
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -dens number -o IONdens.xvg -center
+# gmx density is part of G R O M A C S:
+#
+# Getting the Right Output Means no Artefacts in Calculating Stuff
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Na+"
+     -4.3868        0.0763137
+    -4.20774        0.0779605
+    -4.02869        0.0810387
+    -3.84964         0.086299
+    -3.67058        0.0942974
+    -3.49153         0.106012
+    -3.31248         0.124078
+    -3.13343         0.154469
+    -2.95437         0.207389
+    -2.77532         0.319582
+    -2.59627           0.5368
+    -2.41721         0.925403
+    -2.23816          1.38699
+    -2.05911          1.65257
+    -1.88006          1.48991
+      -1.701          1.04207
+    -1.52195         0.578193
+     -1.3429         0.246164
+    -1.16384        0.0916479
+   -0.984791        0.0266519
+   -0.805738       0.00644718
+   -0.626685      0.000465075
+   -0.447632      3.71982e-06
+   -0.268579                0
+  -0.0895265                0
+   0.0895265                0
+    0.268579                0
+    0.447632                0
+    0.626685      8.56436e-05
+    0.805738      0.000684713
+    0.984791        0.0087281
+     1.16384        0.0512409
+      1.3429         0.223463
+     1.52195         0.593965
+       1.701          1.13894
+     1.88006          1.59198
+     2.05911          1.66651
+     2.23816           1.3327
+     2.41721          0.87313
+     2.59627         0.514297
+     2.77532          0.30694
+     2.95437          0.20085
+     3.13343         0.150476
+     3.31248         0.121828
+     3.49153         0.105267
+     3.67058        0.0926208
+     3.84964        0.0851794
+     4.02869        0.0791448
+     4.20774        0.0774913
+      4.3868        0.0761253

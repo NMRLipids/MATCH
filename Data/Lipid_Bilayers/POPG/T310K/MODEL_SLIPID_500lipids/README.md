@@ -14,3 +14,7 @@ cp  ../../../../../scripts/orderParm_defs/order_parameter_definitions_MODEL_SLIP
 sh ../../../../../scripts/order_parameters_calculate.sh
 mv OrdPars.dat OrdParsPOPG.dat
 
+gmx density -f traj.xtc -s topol.tpr -dens number -o IONdens.xvg -center
+echo 0 | gmx traj -f traj.xtc -s topol.tpr -ob box.xvg -xvg none
+awk '{areaSUM=areaSUM+$2*$3; sum=sum+1}END{print areaSUM/sum}' box.xvg > area.dat
+cat area.dat | awk '{print "SLIPIDS  "$1*2/500}'
