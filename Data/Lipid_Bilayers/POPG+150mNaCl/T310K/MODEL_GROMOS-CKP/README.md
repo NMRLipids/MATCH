@@ -1,9 +1,9 @@
-#Original data from https://doi.org/10.5281/zenodo.2572896
-
+#Original data from https://zenodo.org/record/3378992
 
 
 wget  https://zenodo.org/record/3378992/files/m_400_500_system_POPG_GROMOS.xtc
 wget  https://zenodo.org/record/3378992/files/md_031.tpr
+wget  https://zenodo.org/record/3378992/files/files/topol.top
 
 mv  md_031.tpr topol.tpr
 mv  conf.gro conf.gro

@@ -1,0 +1,11 @@
+# OP_name    resname    atom1    atom2    OP_mean   OP_stddev  OP_stem
+#--------------------------------------------------------------------
+beta1                PE      C32   H2A    nan  nan  nan 
+beta2                PE      C32   H2B    nan  nan  nan 
+alpha1               PE      C31   H1A    nan  nan  nan 
+alpha2               PE      C31   H1B    nan  nan  nan 
+g3_1                 PE      C3    HA     nan  nan  nan 
+g3_2                 PE      C3    HB     nan  nan  nan 
+g2_1                 PE      C2    HX     nan  nan  nan 
+g1_1                 PE      C1    HR     nan  nan  nan 
+g1_2                 PE      C1    HS     nan  nan  nan 
