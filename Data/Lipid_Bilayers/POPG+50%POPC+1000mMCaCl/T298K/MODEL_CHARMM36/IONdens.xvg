@@ -1,0 +1,74 @@
+# This file was created Wed Nov 13 12:32:52 2019
+# Created by:
+#                     :-) GROMACS - gmx density, 2018.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/local/osollila/NMRlipids/MATCH/Data/Lipid_Bilayers/POPG+50%POPC+1000mMCaCl/T298K/MODEL_CHARMM36
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -dens number -o IONdens.xvg -center -b 50000
+# gmx density is part of G R O M A C S:
+#
+# Guyana Rwanda Oman Macau Angola Cameroon Senegal
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "CAL"
+    -4.24576         0.505028
+    -4.07246         0.501879
+    -3.89917         0.499593
+    -3.72587         0.497469
+    -3.55257         0.481036
+    -3.37928         0.462789
+    -3.20598         0.421313
+    -3.03269          0.37259
+    -2.85939         0.357394
+    -2.68609         0.499425
+     -2.5128         0.865714
+     -2.3395          1.25725
+     -2.1662          1.28047
+    -1.99291         0.883509
+    -1.81961         0.390515
+    -1.64631         0.105075
+    -1.47302        0.0146606
+    -1.29972      0.000858994
+    -1.12643                0
+    -0.95313                0
+   -0.779833                0
+   -0.606537                0
+   -0.433241                0
+   -0.259944                0
+  -0.0866482                0
+   0.0866482                0
+    0.259944                0
+    0.433241                0
+    0.606537                0
+    0.779833                0
+     0.95313                0
+     1.12643      0.000744394
+     1.29972        0.0133991
+     1.47302        0.0653868
+     1.64631         0.188608
+     1.81961         0.476867
+     1.99291         0.909807
+      2.1662           1.2689
+      2.3395          1.19668
+      2.5128         0.862256
+     2.68609         0.574641
+     2.85939         0.404392
+     3.03269          0.39586
+     3.20598         0.418786
+     3.37928         0.452069
+     3.55257         0.479706
+     3.72587         0.491181
+     3.89917         0.504848
+     4.07246         0.501819
+     4.24576          0.51656

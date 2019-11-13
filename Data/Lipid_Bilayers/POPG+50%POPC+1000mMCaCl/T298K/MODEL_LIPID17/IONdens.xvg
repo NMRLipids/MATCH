@@ -1,0 +1,74 @@
+# This file was created Thu Oct 31 12:07:22 2019
+# Created by:
+#                     :-) GROMACS - gmx density, 2018.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/local/osollila/NMRlipids/MATCH/Data/Lipid_Bilayers/POPG+50%POPC+1000mMCaCl/T298K/MODEL_LIPID17
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -dens mass -o IONdens.xvg -center
+# gmx density is part of G R O M A C S:
+#
+# Great Red Owns Many ACres of Sand 
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Density (kg m\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "CA"
+      -10.67          38.2023
+    -10.2345          36.4636
+    -9.79901           36.335
+     -9.3635          36.9026
+    -8.92798          35.2932
+    -8.49247          37.0902
+    -8.05696          34.6683
+    -7.62145          37.0746
+    -7.18594          34.6756
+    -6.75043          35.5223
+    -6.31492          36.3248
+     -5.8794          35.7654
+    -5.44389          36.5072
+    -5.00838          32.4415
+    -4.57287          33.3791
+    -4.13736          36.8545
+    -3.70185          38.3325
+    -3.26634          30.8406
+    -2.83082          35.7354
+    -2.39531          29.1603
+     -1.9598          17.0886
+    -1.52429          10.8219
+    -1.08878          3.85999
+   -0.653267          1.28838
+   -0.217756         0.341987
+    0.217756         0.797915
+    0.653267          3.27454
+     1.08878          3.12571
+     1.52429          6.74839
+      1.9598          9.55375
+     2.39531          16.9112
+     2.83082           27.761
+     3.26634          44.7018
+     3.70185          41.1716
+     4.13736          36.8228
+     4.57287          31.4527
+     5.00838          33.2366
+     5.44389           37.017
+      5.8794           35.536
+     6.31492          38.2779
+     6.75043          35.6801
+     7.18594          38.0931
+     7.62145          36.0099
+     8.05696           36.912
+     8.49247          37.7319
+     8.92798          36.1643
+      9.3635           38.072
+     9.79901           35.244
+     10.2345          38.0412
+       10.67          35.5012
