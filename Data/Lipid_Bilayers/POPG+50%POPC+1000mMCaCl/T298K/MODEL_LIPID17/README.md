@@ -11,7 +11,7 @@
 #mv md.xtc traj.xtc
 
 # FROM ohs@puhti.csc.fi:/scratch/project_2001058/Ollila/POPG+50%POPC+1000mMCaCl/T298K/MODEL_LIPID17/correctedDIHEDRAL
-# last 200ns from 320ns simulation
+# last 200ns from 720ns simulation
 #mv run3.tpr topol.tpr
 #echo System | gmx trjconv -f run3.xtc -s topol.tpr -o traj.xtc -b 200000
 #mv run3.gro conf.gro
