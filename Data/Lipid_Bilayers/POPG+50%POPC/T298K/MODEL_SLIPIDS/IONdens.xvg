@@ -1,0 +1,74 @@
+# This file was created Fri Feb  7 16:58:54 2020
+# Created by:
+#                      :-) GROMACS - gmx density, 2020 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/local/osollila/NMRlipids/MATCH/Data/Lipid_Bilayers/POPG+50%POPC/T298K/MODEL_SLIPIDS
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -center -o IONdens.xvg -ng 1 -dens number
+# gmx density is part of G R O M A C S:
+#
+# Good gRace! Old Maple Actually Chews Slate
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "NA"
+    -4.32437        0.0522687
+    -4.14786        0.0532237
+    -3.97136        0.0565816
+    -3.79485        0.0552972
+    -3.61835        0.0627849
+    -3.44184        0.0672257
+    -3.26534         0.071701
+    -3.08884         0.083321
+    -2.91233        0.0932241
+    -2.73583         0.113814
+    -2.55932         0.147783
+    -2.38282         0.223509
+    -2.20631         0.397108
+    -2.02981         0.658797
+     -1.8533          0.90138
+     -1.6768         0.859154
+    -1.50029         0.519881
+    -1.32379         0.171154
+    -1.14728        0.0287257
+   -0.970777       0.00299547
+   -0.794272      0.000198383
+   -0.617767                0
+   -0.441262                0
+   -0.264757                0
+  -0.0882524                0
+   0.0882524                0
+    0.264757                0
+    0.441262                0
+    0.617767                0
+    0.794272       0.00055935
+    0.970777       0.00755985
+     1.14728        0.0588001
+     1.32379         0.213575
+     1.50029         0.521109
+      1.6768         0.821947
+      1.8533         0.862922
+     2.02981         0.639853
+     2.20631         0.387489
+     2.38282         0.227928
+     2.55932         0.155271
+     2.73583         0.117311
+     2.91233        0.0961849
+     3.08884         0.081158
+     3.26534        0.0753986
+     3.44184        0.0657798
+     3.61835        0.0632394
+     3.79485        0.0571956
+     3.97136        0.0585653
+     4.14786        0.0535866
+     4.32437        0.0544172
