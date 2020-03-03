@@ -1,21 +1,6 @@
-# THIS ZENODO REPOSITORY HAS STILL DATA RAN WITH INCORRECT DIHEDRAL PARAMETERS,
-# SEE https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/12
-# THE ANALYSIS IS DONE FROM CORRECTED TRAJECTORY, ZENODO REPOSITORY SHOULD BE UPDATED
+# Data from dx.doi.org/10.5281/zenodo.3693681
 #
-# Data from https://doi.org/10.5281/zenodo.3516643
 #
-#wget https://zenodo.org/record/3516644/files/run_150ns.xtc
-#wget https://zenodo.org/record/3516644/files/md.tpr
-#wget https://zenodo.org/record/3516644/files/structure.gro
-#
-#mv run_150ns.xtc traj.xtc
-#mv md.tpr topol.tpr
-#
-#mv structure.gro conf.gro
-
-# FROM scp ohs@puhti.csc.fi:/scratch/project_2001058/Ollila/POPG+30%POPC/T298K/MODEL_LIPID17/correctedDIHEDRAL/run.xtc
-# last 50ns of 400ns simulation
-
 #mv run.tpr topol.tpr
 #echo System | gmx trjconv -f run.xtc -s topol.tpr -o traj.xtc -b 50000
 #mv run.gro conf.gro
