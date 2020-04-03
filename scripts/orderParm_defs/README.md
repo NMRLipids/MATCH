@@ -1,4 +1,4 @@
-This folder contains definition files that tell to the order parameter calculation code which atoms to analyze \
+This folder contains definition files that tell to the order parameter calculation code which atoms to analyze 
 
 ### Format (example from CHARMM36 POPC)
 <pre>
