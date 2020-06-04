@@ -1,4 +1,4 @@
-# scp ohs@puhti.csc.fi:/scratch/project_2001058/Ollila/POPG+50%POPC+1000mMCaCl/T298K/MODEL_LIPID17ecc2/run2.xtc ./
+# Data from http://doi.org/10.5281/zenodo.3862036
 
 mv run2.tpr topol.tpr
 mv run2.xtc traj.xtc 
