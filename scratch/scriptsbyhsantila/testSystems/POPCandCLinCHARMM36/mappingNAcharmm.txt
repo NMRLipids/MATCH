@@ -1,0 +1,2 @@
+#Individual atoms
+M_NA_M	SOD
