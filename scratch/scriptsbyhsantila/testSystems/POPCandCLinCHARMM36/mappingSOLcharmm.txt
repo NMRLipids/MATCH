@@ -1,0 +1,5 @@
+#Individual atoms
+M_OW_M       OH2
+M_HW1_M       H1
+M_HW2_M       H2
+

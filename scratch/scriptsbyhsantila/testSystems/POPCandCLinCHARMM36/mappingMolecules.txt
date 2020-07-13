@@ -1,0 +1,4 @@
+M_POPC_M	POPC	electrons_POPC.dat	mappingPOPCcharmm.txt
+M_SOL_M		TIP3	electrons_TIP3.dat	mappingSOLcharmm.txt
+M_TOCL_M	TOCL2	electrons_TOCL2.dat	mappingTOCLcharmm.txt
+M_NA_M		SOD	electrons_SOD.dat	mappingNAcharmm.txt
