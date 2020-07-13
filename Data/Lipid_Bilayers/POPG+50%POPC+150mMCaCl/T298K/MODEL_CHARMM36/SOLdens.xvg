@@ -1,0 +1,74 @@
+# This file was created Thu Oct 31 12:13:17 2019
+# Created by:
+#                     :-) GROMACS - gmx density, 2018.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/local/osollila/NMRlipids/MATCH/Data/Lipid_Bilayers/POPG+50%POPC+150mMCaCl/T298K/MODEL_CHARMM36
+# Command line:
+#   gmx density -f traj.xtc -s topol.tpr -dens mass -o SOLdens.xvg -center
+# gmx density is part of G R O M A C S:
+#
+# Good ROcking Metal Altar for Chronical Sinners
+#
+@    title "Partial density"
+@    xaxis  label "Relative position from center (nm)"
+@    yaxis  label "Density (kg m\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "TIP3"
+     -4.4301          1006.76
+    -4.24928          1007.98
+    -4.06846           1007.6
+    -3.88764          1007.72
+    -3.70682          1007.83
+      -3.526          1008.06
+    -3.34518          1005.91
+    -3.16436           996.15
+    -2.98354          966.386
+    -2.80272          895.772
+     -2.6219          782.567
+    -2.44108          640.381
+    -2.26026          499.061
+    -2.07944          367.781
+    -1.89861          251.583
+    -1.71779          148.595
+    -1.53697          72.0394
+    -1.35615          27.6864
+    -1.17533          8.37838
+   -0.994513          1.99815
+   -0.813692         0.464081
+   -0.632872         0.113164
+   -0.452051        0.0441356
+   -0.271231       0.00918359
+  -0.0904102         0.012017
+   0.0904102        0.0193129
+    0.271231       0.00376561
+    0.452051        0.0127689
+    0.632872        0.0736526
+    0.813692         0.430857
+    0.994513          1.96931
+     1.17533           7.4429
+     1.35615          24.8244
+     1.53697          68.2796
+     1.71779          144.516
+     1.89861          247.864
+     2.07944          362.855
+     2.26026          489.687
+     2.44108          631.834
+      2.6219          777.145
+     2.80272          893.916
+     2.98354          966.713
+     3.16436          997.023
+     3.34518             1006
+       3.526          1008.25
+     3.70682          1007.71
+     3.88764          1007.35
+     4.06846          1008.22
+     4.24928          1007.53
+      4.4301          1007.65
