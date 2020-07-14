@@ -48,7 +48,7 @@ echo "System" \
 	  -f $xtcFile \
 	  -s $tprFile \
 	  -o foo.xtc >& center.output
-if [ `grep -c gcq center.output` == 1 ]
+if [ `grep -c '^GROMACS reminds you:' center.output` == 1 ]
 then
   grep Selected center.output
   grep frame center.output
@@ -88,7 +88,7 @@ echo -e "centralAtom\nSystem" \
 	  -f foo.xtc \
 	  -s $tprFile \
 	  -o foo2.xtc >& center.output
-if [ `grep -c gcq center.output` == 1 ]
+if [ `grep -c '^GROMACS reminds you:' center.output` == 1 ]
 then
   grep Selected center.output
 else
@@ -128,7 +128,7 @@ echo -e "g3carbons\nSystem" \
 	  -f foo2.xtc \
 	  -s $tprFile \
 	  -o $outFile >& center.output
-if [ `grep -c gcq center.output` == 1 ]
+if [ `grep -c '^GROMACS reminds you:' center.output` == 1 ]
 then
   grep Selected center.output
 else
@@ -149,7 +149,7 @@ for mol in $(awk '{print $1}' ${molMappFile}); do
     eleFile=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n", $3}')
     echo -e "g3carbons\n${molName}" | \
       gmx density -center -n foo.ndx -f ${outFile} -s ${tprFile} -ei ${eleFile} -dens electron -o electronDENSITY_$molName.xvg -xvg none -sl 100 >& density.output
-    if [ `grep -c gcq density.output` == 1 ]
+    if [ `grep -c '^GROMACS reminds you:' density.output` == 1 ]
     then
       echo "The groups selected for centering and for density calculation:"
       grep Selected density.output
@@ -166,11 +166,11 @@ echo
 echo "Calculating form factor..."
 slice=$(head -n2 electronDENSITY.xvg | awk '{dz=$1-prev;prev=$1}END{print dz}')
 
-minbox=$(head -n 1 electronDENSITYsol.xvg | awk '{print $1}')
-maxbox=$(tail -n 1 electronDENSITYsol.xvg | awk '{print $1}')
-bulkDENS=$(awk -v minb=$minbox -v maxb=$maxbox '{if ($1<0.33+minb || $1>maxb-0.33)  {n=n+1; s=s+$2}} END{print s/n}' electronDENSITYsol.xvg)
+minbox=$(head -n 1 electronDENSITY.xvg | awk '{print $1}')
+maxbox=$(tail -n 1 electronDENSITY.xvg | awk '{print $1}')
+bulkDENS=$(awk -v minb=$minbox -v maxb=$maxbox '{if ($1<0.33+minb || $1>maxb-0.33)  {n=n+1; s=s+$2}} END{print s/n}' electronDENSITY.xvg)
 
-cat electronDENSITY.xvg | awk -v slice=$slice-v bulkDENS=$bulkDENS 'BEGIN{scale=0.01;}{for(q=0;q<2000;q=q+1){Fa[q]=Fa[q]+($2-bulkDENS)*cos(scale*q*$1)*slice;Fb[q]=Fb[q]+($2-bulkDENS)*sin(scale*q*$1)*slice}}END{for(q=0;q<1000;q=q+1){print 0.1*q*scale" "sqrt(Fa[q]*Fa[q]+Fb[q]*Fb[q])
+cat electronDENSITY.xvg | awk -v slice=$slice -v bulkDENS=$bulkDENS 'BEGIN{scale=0.01;}{for(q=0;q<2000;q=q+1){Fa[q]=Fa[q]+($2-bulkDENS)*cos(scale*q*$1)*slice;Fb[q]=Fb[q]+($2-bulkDENS)*sin(scale*q*$1)*slice}}END{for(q=0;q<1000;q=q+1){print 0.1*q*scale" "sqrt(Fa[q]*Fa[q]+Fb[q]*Fb[q])
 }}'> Form_Factor_From_Simulation.dat
 mv electronDENSITY.xvg Electron_Density_From_Simulation.dat
 rm foo.ndx foobar.map
