@@ -1,0 +1,2 @@
+#Individual Atoms  #Amber Atoms
+M_NA_M	           NA
