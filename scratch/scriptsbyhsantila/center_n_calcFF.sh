@@ -67,11 +67,24 @@ for mol in $(awk '{print $1}' ${molMappFile}); do
     mapName=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n",$4}')
     cat ${mapName} >> foobar.map
 done
-G1CH3name=`grep M_G1C[0-9]*_M foobar.map | tail -n1 | awk '{print $2}'`
-echo 'The name of the CH3 carbon in sn-1 chain:' $G1CH3name
+G1CH3name=`grep M_[1-9]*G1C[0-9]*_M foobar.map | tail -n1 | awk '{print $2}'`
+if [ -z "$G1CH3name" ]
+then
+    echo 'NO ATOM found for centering. Do you have a glycerol backbone? Exiting.'
+    echo
+    exit
+else
+    echo 'The name of the CH3 carbon in sn-1 chain:' $G1CH3name
+fi
 #
 # Find the number of the CH3 atom in the last lipid:
 echo -e "a ${G1CH3name}\nq" | gmx make_ndx -f $tprFile -o foo.ndx >& make_ndx.output
+grep "${G1CH3name}" make_ndx.output | grep Found
+if [ `grep $G1CH3name make_ndx.output | grep Found | awk '{print $2}'` == 0 ]
+then
+    echo 'and hence can not center. Exiting.'
+    exit
+fi
 G1CH3number=`grep '[0-9]' foo.ndx | tail -n1 | awk '{print $NF}'`
 echo "The atom number of the last lipid's CH3: " $G1CH3number
 rm make_ndx.output
