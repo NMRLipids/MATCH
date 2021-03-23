@@ -1,0 +1,10 @@
+# paste <(grep '^[1-5] ' ./CHARMM36/Headgroup_Glycerol_Order_Parameters_Simulation.dat) <(grep '^[1-5] ' ./MODEL_CHARMM36_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat) | awk '{max=-2;min=2;for (i=2; i<=NF; i+=3){if($i>max){max=$i};if($i<min){min=$i}}}{print $1, (400*$2+100*$5)/500,min,max}' > CHARMM36_head-glyc-OPs_ave_min_max.dat
+1 -0.013428 -0.01582 -0.01283
+1 -0.00368 -0.00404 -0.00359
+2 0.076566 0.07619 0.07807
+2 0.05306 0.05243 0.05558
+3 -0.20658 -0.21278 -0.20503
+3 -0.216508 -0.22134 -0.21530
+4 -0.200584 -0.20564 -0.19932
+5 -0.181178 -0.19217 -0.17843
+5 -0.025866 -0.02613 -0.02580
