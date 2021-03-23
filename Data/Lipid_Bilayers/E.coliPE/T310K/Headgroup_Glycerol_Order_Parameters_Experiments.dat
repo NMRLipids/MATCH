@@ -10,7 +10,7 @@
 # 3 = g3 
 # 4 = g2 
 # 5 = g1 
-label Order_Parameter_1(R)  Order_Parameter_2(S)
+# label Order_Parameter_1(R)  Order_Parameter_2(S)
 0      nan         nan
 1      nan         nan        
 2      nan         nan
