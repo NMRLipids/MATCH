@@ -1,0 +1,10 @@
+# paste <(awk '!/^#/{print $1,$4,$5}' OrdParPOPE_rep_1.dat.jmelcr_style.out | sort -n) <(awk '!/^#/{print $1,$4,$5}' OrdParPOPE_rep_2.dat.jmelcr_style.out | sort -n) | sed 's/alpha./2/' | sed 's/beta./1/' | sed 's/g1_./5/' | sed 's/g2_1/4/' | sed 's/g3_./3/' | sort -n | awk '{max=-2;min=2;for (i=3; i<=NF; i+=3){if($i>max){max=$i};if($i<min){min=$i}}}{print $1, (100*$3+100*$6)/200,min,max}' > GROMOS43A1-S3_head-glyc-OPs_ave_min_max.dat
+1 0.04895 0.04785 0.05005
+1 0.07905 0.07542 0.08268
+2 0.06072 0.05947 0.06197
+2 0.09708 0.09288 0.10128
+3 -0.19452 -0.19724 -0.19180
+3 -0.12007 -0.12210 -0.11804
+4 -0.14962 -0.15520 -0.14404
+5 0.102395 0.08864 0.11615
+5 -0.06159 -0.06545 -0.05773

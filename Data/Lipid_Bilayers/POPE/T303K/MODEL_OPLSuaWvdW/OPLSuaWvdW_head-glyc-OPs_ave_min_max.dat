@@ -1,0 +1,10 @@
+# paste <(awk '!/^#/{print $1,$4,$5}' OrdParPOPE_rep_1.dat.jmelcr_style.out | sort -n) <(awk '!/^#/{print $1,$4,$5}' OrdParPOPE_rep_2.dat.jmelcr_style.out | sort -n) | sed 's/alpha./2/' | sed 's/beta./1/' | sed 's/g1_./5/' | sed 's/g2_1/4/' | sed 's/g3_./3/' | sort -n | awk '{max=-2;min=2;for (i=3; i<=NF; i+=3){if($i>max){max=$i};if($i<min){min=$i}}}{print $1, (100*$3+100*$6)/200,min,max}' > OPLSuaWvdW_head-glyc-OPs_ave_min_max.dat
+1 -0.023815 -0.02738 -0.02025
+1 -0.02049 -0.02406 -0.01692
+2 0.08575 0.08074 0.09076
+2 0.065185 0.06097 0.06940
+3 -0.29556 -0.29627 -0.29485
+3 -0.27898 -0.28248 -0.27548
+4 -0.312745 -0.31482 -0.31067
+5 -0.265625 -0.26623 -0.26502
+5 0.1499 0.14576 0.15404

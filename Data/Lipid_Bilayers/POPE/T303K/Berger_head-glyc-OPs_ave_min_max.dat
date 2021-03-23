@@ -1,0 +1,10 @@
+# paste <(awk '!/^#/{print $1,$4,$5}' MODEL_BERGER_VRIES/OrdParPOPE_rep_1.dat.jmelcr_style.out | grep -v oyl | sort -n) <(awk '!/^#/{print $1,$4,$5}' MODEL_BERGER_VRIES/OrdParPOPE_rep_2.dat.jmelcr_style.out | grep -v oyl | sort -n) <(awk '!/^#/{print $1,$4,$5}' MODEL_BERGER_LARGEh/OrdParPOPE_rep_1.dat.jmelcr_style.out | grep -v oyl | sort -n) <(awk '!/^#/{print $1,$4,$5}' MODEL_BERGER_LARGEh/OrdParPOPE_rep_2.dat.jmelcr_style.out | grep -v oyl | sort -n) | sed 's/alpha./2/' | sed 's/beta./1/' | sed 's/g1_./5/' | sed 's/g2_1/4/' | sed 's/g3_./3/' | sort -n | awk '{max=-2;min=2;for (i=3; i<=NF; i+=3){if($i>max){max=$i};if($i<min){min=$i}}}{print $1, (100*$3+100*$6+100*$9+100*$12)/400,min,max}' > Berger_head-glyc-OPs_ave_min_max.dat
+1 0.07051 0.06742 0.07215
+1 0.0288375 0.01825 0.03661
+2 0.121417 0.10926 0.13131
+2 0.131428 0.12401 0.14205
+3 -0.28295 -0.28736 -0.27870
+3 -0.173463 -0.18248 -0.15977
+4 -0.175243 -0.18455 -0.16661
+5 0.139363 0.11120 0.15722
+5 0.0842475 0.07001 0.09632
