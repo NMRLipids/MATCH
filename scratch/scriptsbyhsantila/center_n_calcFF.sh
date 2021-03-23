@@ -17,7 +17,7 @@
 # M_POPC_M	POPC	electrons_POPC.dat	mappingPOPCcharmm.txt
 # M_SOL_M	TIP3	electrons_TIP3.dat	mappingSOLcharmm.txt
 # kuvaja:scriptsbyhsantila bb$
-# So columns are: [1] Molecul name in NMRlipids; [2] molecule name in this force field; [3] name of
+# So columns are: [1] Molecule name in NMRlipids; [2] molecule name in this force field; [3] name of
 # the file containing atomwise numbers of electrons, as required by gmx density; [4] name of the
 # mappingfile between NMRlipids atom naming scheme and the atom names in this force field.
 
@@ -37,6 +37,43 @@ else
   echo "Too few inputs, exiting."
   exit
 fi
+
+# Check that molecule names in $molMappFile are found as residuenames in $tprFile:
+echo -e "\nq" | gmx make_ndx -f $tprFile -o foo.ndx >& make_ndx.output
+for mol in $(awk '{print $2}' ${molMappFile}); do
+    if [ `grep -c $mol foo.ndx` == 0 ] # if molecule not in the standard index
+    then
+	if [ -e missingMolecules.ndx ] # if missingMolecules.ndx exists
+	then
+	    if [ `grep '\[' missingMolecules.ndx | grep -c $mol` == 0 ]
+	    then
+		echo
+		echo 'Molecule' $mol 'given in' $molMappFile 'was found neither in the standard index file nor in missingMolecules.ndx.'
+		echo 'Please add it as a group titled [' $mol '] to missingMolecules.ndx;'
+		echo 'please note that missingMolecules.ndx should only contain index groups of such missing molecules.'
+		echo
+		echo 'Note: Before adding anything to missingMolecules.ndx, make sure this is not just a'
+		echo '      typo (like SOD that should be NA) in'  $molMappFile
+		echo
+		echo 'Exiting.'
+		exit		
+	    fi
+	else # if no missingMolecules.ndx
+	    echo
+	    echo 'Molecule' $mol 'given in' $molMappFile 'was not found in the standard index file.'
+	    echo 'Please add it as a group titled [' $mol '] using a file called missingMolecules.ndx; please'
+	    echo 'note that missingMolecules.ndx should only contain index groups of such missing molecules.'
+	    echo
+	    echo 'Note: Before adding a missingMolecules.ndx, make sure this is not just a typo'
+	    echo '       (like SOD that should be NA) in'  $molMappFile
+	    echo
+	    echo 'Exiting.'
+	    echo
+	    exit
+	fi
+    fi
+done
+
 
 echo
 echo "Will now CENTER trajectory ${xtcFile} to ${outFile}."
@@ -115,6 +152,10 @@ echo
 #
 # Find the g3 carbons:
 # ... find their name in this FF:
+if [ -e missingMolecules.ndx ] # if missingMolecules.ndx exists, use it
+then
+    cat missingMolecules.ndx >> foo.ndx
+fi
 echo '[ g3carbons ]' >> foo.ndx
 for mol in $(awk '{print $1}' ${molMappFile}); do
     molName=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n",$2}')
@@ -155,14 +196,15 @@ echo "Centering done"
 
 echo
 echo "Calculating density profiles..."
-rm electronDENSITY.xvg; touch electronDENSITY.xvg
+if [ -e electronDENSITY.xvg ]; then rm electronDENSITY.xvg; fi; touch electronDENSITY.xvg
 for mol in $(awk '{print $1}' ${molMappFile}); do
     molName=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n",$2}')
     echo "- ${molName} -"
+    molIndex=$(grep '\[' foo.ndx | grep -n "\[ ${molName} \]" | head -n1 | sed 's/:.*//' | awk '{print $1-1}')
     eleFile=$(grep ${mol} ${molMappFile} | awk '{printf "%s\n", $3}')
-    echo -e "g3carbons\n${molName}" | \
-      gmx density -center -n foo.ndx -f ${outFile} -s ${tprFile} -ei ${eleFile} -dens electron -o electronDENSITY_$molName.xvg -xvg none -sl 100 >& density.output
-    if [ `grep -c '^GROMACS reminds you:' density.output` == 1 ]
+    echo -e "g3carbons\n${molIndex}" | \
+	gmx density -center -n foo.ndx -f ${outFile} -s ${tprFile} -ei ${eleFile} -dens electron -o electronDENSITY_$molName.xvg -xvg none -sl 100 >& density.output
+    if [ $? == 0 ]
     then
       echo "The groups selected for centering and for density calculation:"
       grep Selected density.output
@@ -170,8 +212,10 @@ for mol in $(awk '{print $1}' ${molMappFile}); do
       paste electronDENSITY.xvg electronDENSITY_$molName.xvg | awk '{print $1,$2+$4}' > foo.xvg
       mv foo.xvg electronDENSITY.xvg
     else
-      echo "gmx density failed, exiting."
-    exit
+      echo "gmx density failed:"
+      echo "[...]"
+      tail density.output
+      exit
     fi
 done
 
