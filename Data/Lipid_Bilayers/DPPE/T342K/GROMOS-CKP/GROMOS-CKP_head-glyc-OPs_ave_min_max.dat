@@ -1,4 +1,4 @@
-# paste <(awk '!/^#/{print $1,$4,$5}' OrdParPOPE_rep_1.dat.jmelcr_style.out | sort -n) <(awk '!/^#/{print $1,$4,$5}' OrdParPOPE_rep_2.dat.jmelcr_style.out | sort -n) | sed 's/alpha./2/' | sed 's/beta./1/' | sed 's/g1_./5/' | sed 's/g2_1/4/' | sed 's/g3_./3/' | sort -n | awk '{max=-2;min=2;for (i=3; i<=NF; i+=3){if($i>max){max=$i};if($i<min){min=$i}}}{print $1, (100*$3+100*$6)/200,min,max}' > GROMOS-CKP_head-glyc-OPs_ave_min_max.dat
+# paste <(awk '!/^#/{print $1,$4,$5}' OrdParPOPE_rep_1.dat.jmelcr_style.out | sort -n) <(awk '!/^#/{print $1,$4,$5}' OrdParPOPE_rep_2.dat.jmelcr_style.out | sort -n) | sed 's/alpha./2/' | sed 's/beta./1/' | sed 's/g1_./5/' | sed 's/g2_1/4/' | sed 's/g3_./3/' | sort -n | awk '{max=-2;min=2;for (i=3; i<=NF; i+=3){if($i>max){max=$i};if($i<min){min=$i}}}{print $1, (400*$3+400*$6)/800,min,max}' > GROMOS-CKP_head-glyc-OPs_ave_min_max.dat
 1 -0.002705 -0.00367 -0.00174
 1 -0.03592 -0.03717 -0.03467
 2 0.11543 0.11352 0.11734
