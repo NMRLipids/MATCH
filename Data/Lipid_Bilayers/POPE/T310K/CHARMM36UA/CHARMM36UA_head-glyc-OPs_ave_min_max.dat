@@ -1,0 +1,10 @@
+# paste <(awk '!/^#/{print $1,$4,$5}' OrdParsPOPE_rep_1.dat | sort -n) <(awk '!/^#/{print $1,$4,$5}' OrdParsPOPE_rep_2.dat | sort -n) | sed 's/alpha./2/' | sed 's/beta./1/' | sed 's/g1_./5/' | sed 's/g2_1/4/' | sed 's/g3_./3/' | sort -n | awk '{max=-2;min=2;for (i=3; i<=NF; i+=3){if($i>max){max=$i};if($i<min){min=$i}}}{print $1, (100*$3+100*$6)/200,min,max}' > CHARMM36UA_head-glyc-OPs_ave_min_max.dat
+1 -0.0073 -0.00751 -0.00709
+1 -0.00585 -0.00650 -0.00520
+2 0.06225 0.06167 0.06283
+2 0.06351 0.06276 0.06426
+3 -0.2342 -0.23472 -0.23368
+3 -0.21845 -0.22035 -0.21655
+4 -0.19919 -0.20003 -0.19835
+5 -0.064565 -0.06603 -0.06310
+5 -0.14117 -0.14290 -0.13944
