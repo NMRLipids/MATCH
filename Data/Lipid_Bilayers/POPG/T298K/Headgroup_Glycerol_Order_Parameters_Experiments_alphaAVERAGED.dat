@@ -1,0 +1,10 @@
+# From "Headgroup_Glycerol_Order_Parameters_Experiments.dat", average of deuterons for alpha.
+#
+# According the experiments by Tiago Ferreira for NMRlipids IV,
+# the signs for alpha and beta are positive
+#
+# 1 = beta
+# 2 = alpha
+#label Average_Quadrupolar_coupling
+1     4.7
+2    10.7
