@@ -1,5 +1,8 @@
 # From Borle and Seelig Chem. Phys. Lipids 36 (1985) 263-283
-# Table II with 10mM PIPES
+# Table II with 10 mM PIPES (second line from the top).
+#
+# Note:	beta is from racemic mixture of 3,1' and 3,3' enantiomers.
+#	alpha is from the pure 3,3' enantiomer.
 #
 # According the experiments by Tiago Ferreira for NMRlipids IV,
 # the signs for alpha and beta are positive
@@ -11,9 +14,9 @@
 # 4 = g2 
 # 5 = g1 
 #label Quadrupolar_coupling_1  Quadrupolar_coupling_2 
-0      nan           nan
+0     nan        nan
 1     4.7        nan        
-2     9.3       12.8
+2     9.1       12.3
 3     nan        nan
 4     nan        nan
-5       nan      nan
+5     nan        nan
